@@ -1,0 +1,52 @@
+@startuml
+
+package com.gelvt.gofdp.simplefactory{
+
+    abstract class Carrier <<运载工具>>{
+        + {abstract} void transport(goods, destination)
+    }
+
+    class Car <<汽车>> extends Carrier{
+        + {abstract} void transport(goods, destination)
+    }
+
+    class Plane <<飞机>> extends Carrier{
+            + {abstract} void transport(goods, destination)
+    }
+
+    class Ship <<轮船>> extends Carrier{
+            + {abstract} void transport(goods, destination)
+    }
+
+    enum CarrierType <<运载工具类型>> {
+        CAR
+        PLANE
+        SHIP
+    }
+
+    class CarrierFactory <<运载工具工厂>>{
+        + {static} Carrier getCarrier(CarrierType type)
+    }
+
+    note left of CarrierFactory : "专用于创建各种运载工具"
+
+    CarrierFactory ..> Carrier : 创建
+
+}
+
+package com.gelvt.gofdp{
+
+    class App <<Client>>{
+        + void main(String[] args)
+    }
+
+
+}
+
+App ..> CarrierFactory : 调用
+App ..> CarrierType
+CarrierFactory ..> CarrierType
+
+note "blog.zenghui.name" as copyright
+
+@enduml
