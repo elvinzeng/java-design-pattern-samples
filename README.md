@@ -4,4 +4,4 @@
 # 设计模式列表
 到今天为止实现了以下模式，以后有空余时间的话将继续更新。
 
-* [简单工厂模式](https://github.com/elvinzeng/java-design-pattern-samples/tree/master/simple-factory)
+* [简单工厂模式](/simple-factory)
