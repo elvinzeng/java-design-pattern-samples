@@ -9,7 +9,7 @@ import com.gelvt.gofdp.abstractfactory.SmartWatch;
 /**
  * Desc: Client
  * Author: Elvin Zeng
- * Date: 17-6-17.
+ * Date: 17-6-18.
  */
 public class App {
     public static void main(String[] args)
