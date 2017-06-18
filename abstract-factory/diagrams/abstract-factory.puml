@@ -1,0 +1,99 @@
+@startuml
+
+package com.gelvt.gofdp.abstractfactory{
+
+    interface DigitalEquipmentFactory <<数码装备工厂>>{
+        Laptop manufactureLaptop();
+        Phone manufacturePhone();
+        SmartWatch manufactureSmartWatch();
+    }
+
+    together {
+        class AppleFactory <<苹果公司的工厂>> implements DigitalEquipmentFactory{
+            Laptop manufactureLaptop();
+            Phone manufacturePhone();
+            SmartWatch manufactureSmartWatch();
+        }
+
+        class MacBook <<苹果笔记本>>{
+            + coding(operator)
+        }
+
+        class IPhone <<苹果智能手机>>{
+            + setOwner(owner)
+            + takePicture()
+        }
+
+        class AppleWatch <<苹果智能手表>>{
+            + displayCurrentTime()
+            + receivePhoneCall()
+        }
+    }
+
+    together {
+        class SamsungFactory <<三星公司的工厂>> implements DigitalEquipmentFactory{
+            Laptop manufactureLaptop();
+            Phone manufacturePhone();
+            SmartWatch manufactureSmartWatch();
+        }
+
+        class SamsungNoteBook <<三星笔记本>> {
+            + coding(operator)
+        }
+
+        class SamsungGalaxy <<三星智能手机>> {
+            + setOwner(owner)
+            + takePicture()
+        }
+
+        class GalaxyGear <<三星智能手表>> {
+            + displayCurrentTime()
+            + receivePhoneCall()
+        }
+    }
+
+    AppleFactory ..> MacBook : 创建
+    AppleFactory ..> IPhone : 创建
+    AppleFactory ..> AppleWatch : 创建
+
+    SamsungFactory ..> SamsungNoteBook : 创建
+    SamsungFactory ..> SamsungGalaxy : 创建
+    SamsungFactory ..> GalaxyGear : 创建
+
+
+    interface Laptop <<笔记本电脑>>{
+        + coding(operator)
+    }
+
+    interface Phone <<手机>>{
+        + setOwner(owner)
+        + takePicture()
+    }
+
+    interface SmartWatch <<智能手表>>{
+        + displayCurrentTime()
+        + receivePhoneCall()
+    }
+
+    MacBook ..|> Laptop
+    IPhone ..|> Phone
+    AppleWatch ..|> SmartWatch
+
+    SamsungNoteBook ..|> Laptop
+    SamsungGalaxy ..|> Phone
+    GalaxyGear ..|> SmartWatch
+}
+
+package com.gelvt.gofdp {
+    class App <<Client>>{
+        + void main(String[] args)
+    }
+
+}
+
+App ..> DigitalEquipmentFactory
+
+note "http://blog.zenghui.name" as copyright
+
+
+@enduml
