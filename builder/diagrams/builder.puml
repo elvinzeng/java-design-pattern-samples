@@ -1,0 +1,76 @@
+@startuml
+
+package com.gelvt.gofdp.builder{
+
+    enum MessageHeaderName <<消息头名称枚举>>{
+        IS_CONTENT_ENCRYPTED
+        ENCRYPTION_ALGORITHM
+        CONTENT_TYPE
+        RECIPIENT_ID
+        SENDER_ID
+    }
+
+    interface Message <<消息>>{
+        + getHeader(headerName : MessageHeaderName) : String
+        + toByteArray() : byte[];
+    }
+
+    interface MessageBuilder <<消息创建者>>{
+        withHeader(headerName : MessageHeaderName, val : String) : MessageBuilder
+        appendStringBody(content : String) : MessageBuilder
+        appendImageBody(image : File) : MessageBuilder
+        compact() : MessageBuilder
+        build() : Message
+    }
+
+    class JavaSerializationBasedMessage <<基于java序列化的消息>>{
+        + getHeader(headerName : MessageHeaderName) : String
+        + toByteArray() : byte[];
+    }
+
+    class ProtoBufBasedMessage <<基于ProtoBuf的消息>>{
+        + getHeader(headerName : MessageHeaderName) : String
+        + toByteArray() : byte[];
+    }
+
+    class JavaSerializationBasedMessageBuilder <<基于java序列化的消息的创建者>>{
+        withHeader(headerName : MessageHeaderName, val : String) : MessageBuilder
+        appendStringBody(content : String) : MessageBuilder
+        appendImageBody(image : File) : MessageBuilder
+        compact() : MessageBuilder
+        build() : Message
+    }
+
+    class ProtoBufBasedMessageBuilder <<基于ProtoBuf的消息的创建者>>{
+        withHeader(headerName : MessageHeaderName, val : String) : MessageBuilder
+        appendStringBody(content : String) : MessageBuilder
+        appendImageBody(image : File) : MessageBuilder
+        compact() : MessageBuilder
+        build() : Message
+    }
+
+
+    Message <|.. JavaSerializationBasedMessage
+    Message <|.. ProtoBufBasedMessage
+    MessageBuilder <|.. JavaSerializationBasedMessageBuilder
+    MessageBuilder <|.. ProtoBufBasedMessageBuilder
+    Message ..> MessageHeaderName
+    MessageBuilder ..> MessageHeaderName
+    JavaSerializationBasedMessageBuilder ..> JavaSerializationBasedMessage
+    ProtoBufBasedMessageBuilder ..> ProtoBufBasedMessage
+
+}
+
+package com.gelvt.gofdp{
+    class App <<Client，这里作用等同Director>>{
+        + void main(String[] args)
+    }
+}
+
+App ..> Message
+App ..>MessageBuilder
+
+
+note "http://blog.zenghui.name" as copyright
+
+@enduml
