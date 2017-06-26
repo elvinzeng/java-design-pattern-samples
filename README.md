@@ -10,3 +10,4 @@
 * [工厂方法模式](/factory-method)
 * [抽象工厂模式](/abstract-factory)
 * [单例模式](/singleton)
+* [创建者模式](/builder)
