@@ -1,6 +1,6 @@
 @startuml
 
-package com.gelvt.gofdp.singleton{
+package com.gelvt.gofdp.prototype{
 
     class Coordinate <<坐标>>{
         + getX() : double
