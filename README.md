@@ -11,3 +11,4 @@
 * [抽象工厂模式](/abstract-factory)
 * [单例模式](/singleton)
 * [创建者模式](/builder)
+* [原型模式](/prototype)
