@@ -13,6 +13,8 @@ import com.gelvt.gofdp.prototype.Triangle;
 public class App {
     public static void main(String[] args){
         //  先创建一个三角形原型和一个矩形原型
+        //  这里的三角形和矩形可以想象成是从数据库或者文件中读取参数创建的，
+        //  创建过程比较麻烦而且开销略大
         Triangle trianglePrototype = new Triangle();
         trianglePrototype.setName("新建三角形");
         trianglePrototype.setVertex1(new Coordinate(1, 1));
@@ -31,6 +33,8 @@ public class App {
         rectanglePrototype.setColor("gray");
         rectanglePrototype.setBorderWidth(1);
         //  同样，这里可以想象成还要给矩形set很多其他的属性
+
+        //  这里将上述原型对象缓存起来供后面复制用
 
         //  现在，我想将上面的三角形和矩形平移并复制多份插入画板中
         System.out.println("平移复制10份三角形");
