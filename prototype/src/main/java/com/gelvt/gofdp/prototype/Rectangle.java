@@ -1,7 +1,5 @@
 package com.gelvt.gofdp.prototype;
 
-import org.w3c.dom.css.Rect;
-
 /**
  * Desc: 矩形
  * Author: Elvin Zeng
