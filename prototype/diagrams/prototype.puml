@@ -1,0 +1,62 @@
+@startuml
+
+package com.gelvt.gofdp.singleton{
+
+    class Coordinate <<坐标>>{
+        + getX() : double
+        + void setX(x : double)
+        + getY() : double
+        + void setY(y : double)
+    }
+
+    abstract class Polygon <<多边形>> {
+        + getColor() : String
+        + setColor(color : String)
+        + getBorderWidth() : int
+        + setBorderWidth(borderWidth : int)
+        + getName() : String
+        + setName(name : String)
+        + {abstract} Polygon clone()
+    }
+
+    class Triangle <<三角形>> {
+        + Polygon clone()
+        + getVertex1() : Coordinate
+        + setVertex1(vertex1 : Coordinate)
+        + getVertex2() : Coordinate
+        + setVertex2(vertex2 : Coordinate)
+        + getVertex3() : Coordinate
+        + setVertex3(vertex3 : Coordinate)
+    }
+
+    class Rectangle <<矩形>>{
+        + Polygon clone()
+        + getVertex1() : Coordinate
+        + setVertex1(vertex1 : Coordinate)
+        + getVertex2() : Coordinate
+        + setVertex2(vertex2 : Coordinate)
+        + getVertex3() : Coordinate
+        + setVertex3(vertex3 : Coordinate)
+        + getVertex4() : Coordinate
+        + setVertex4(vertex4 : Coordinate)
+    }
+
+    Polygon <|-- Triangle
+    Polygon <|-- Rectangle
+    Coordinate <-- Triangle
+    Coordinate <-- Rectangle
+
+}
+
+package com.gelvt.gofdp{
+    class App <<Client>>{
+        + main(String[] args)
+    }
+}
+
+App ..> Polygon
+
+
+note "http://blog.zenghui.name" as copyright
+
+@enduml
