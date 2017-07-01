@@ -33,6 +33,7 @@
         <module>singleton</module>
         <module>builder</module>
         <module>prototype</module>
+        <module>adapter</module>
     </modules>
 
 
