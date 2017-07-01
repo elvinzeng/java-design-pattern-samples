@@ -2,10 +2,8 @@ package com.gelvt.gofdp;
 
 import com.gelvt.gofdp.adapter.*;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
 /**
  * Desc: Client
