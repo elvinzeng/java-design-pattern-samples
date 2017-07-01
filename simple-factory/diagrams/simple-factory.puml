@@ -44,6 +44,8 @@ App ..> CarrierFactory : 调用
 App ..> CarrierType
 CarrierFactory ..> CarrierType
 
-note "http://blog.zenghui.name" as copyright
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
 
 @enduml

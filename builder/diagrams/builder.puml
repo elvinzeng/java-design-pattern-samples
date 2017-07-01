@@ -71,6 +71,8 @@ App ..> Message
 App ..>MessageBuilder
 
 
-note "http://blog.zenghui.name" as copyright
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
 
 @enduml

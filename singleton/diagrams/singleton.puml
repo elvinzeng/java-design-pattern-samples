@@ -29,6 +29,8 @@ package com.gelvt.gofdp{
 App ..> ApplicationContext
 
 
-note "http://blog.zenghui.name" as copyright
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
 
 @enduml
