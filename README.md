@@ -12,3 +12,4 @@
 * [单例模式](/singleton)
 * [创建者模式](/builder)
 * [原型模式](/prototype)
+* [适配器模式](/adapter)
