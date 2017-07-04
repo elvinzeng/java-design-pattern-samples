@@ -34,6 +34,7 @@
         <module>builder</module>
         <module>prototype</module>
         <module>adapter</module>
+        <module>facade</module>
     </modules>
 
 
