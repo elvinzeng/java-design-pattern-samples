@@ -20,7 +20,12 @@ package com.gelvt.gofdp.facade{
         + acquire()
     }
 
-    class ImageProcessService <<图片处理服务>>{
+    interface ImageProcessFacade <<图片处理服务>>{
+        + scaleImage(image: File, width: double, height: double)
+        + void watermark(image: File, content: String)
+    }
+
+    class DefaultImageProcessFacade <<图片处理服务Facade默认实现>>{
         - currentUserId: Integer
         - rateLimiter: RateLimiter
         - billingService: BillingService
@@ -30,9 +35,11 @@ package com.gelvt.gofdp.facade{
         + void watermark(image: File, content: String)
     }
 
-    ImageProcessService --> BillingService
-    ImageProcessService --> FileManager
-    ImageProcessService --> RateLimiter
+    ImageProcessFacade <|.. DefaultImageProcessFacade
+
+    DefaultImageProcessFacade --> BillingService
+    DefaultImageProcessFacade --> FileManager
+    DefaultImageProcessFacade --> RateLimiter
 }
 
 package com.gelvt.gofdp{
@@ -41,7 +48,7 @@ package com.gelvt.gofdp{
     }
 }
 
-App ..> ImageProcessService
+App ..> ImageProcessFacade
 
 
 footer

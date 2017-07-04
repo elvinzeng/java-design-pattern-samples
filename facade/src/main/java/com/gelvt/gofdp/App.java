@@ -1,6 +1,7 @@
 package com.gelvt.gofdp;
 
-import com.gelvt.gofdp.facade.ImageProcessService;
+import com.gelvt.gofdp.facade.DefaultImageProcessFacade;
+import com.gelvt.gofdp.facade.ImageProcessFacade;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,8 +14,8 @@ import java.io.IOException;
 public class App {
     public static void main(String[] args) throws IOException,
             InterruptedException {
-        ImageProcessService imageProcessService =
-                new ImageProcessService(getCurrentUserId());
+        ImageProcessFacade imageProcessFacade =
+                new DefaultImageProcessFacade(getCurrentUserId());
 
         for (int i = 0; i < 10; i++){
             System.out.println("--------------------");
@@ -22,8 +23,8 @@ public class App {
             File testImage = File.createTempFile("com.gelvt.gofdp.facade.test",
                     ".png");
 
-            imageProcessService.scaleImage(testImage, 100, 120);
-            imageProcessService.watermark(testImage, "My name is Elvin Zeng");
+            imageProcessFacade.scaleImage(testImage, 100, 120);
+            imageProcessFacade.watermark(testImage, "My name is Elvin Zeng");
         }
     }
 

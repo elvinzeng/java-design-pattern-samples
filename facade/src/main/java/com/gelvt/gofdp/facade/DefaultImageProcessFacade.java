@@ -7,13 +7,13 @@ import java.io.File;
  * @author: Elvin Zeng
  * @date: 17-7-4.
  */
-public class ImageProcessService {
+public class DefaultImageProcessFacade implements ImageProcessFacade {
     private Integer currentUserId;
     private RateLimiter rateLimiter = RateLimiter.create(10);
     private BillingService billingService = new BillingService();
     private FileManager fileManager = new FileManager();
 
-    public ImageProcessService(Integer currentUserId){
+    public DefaultImageProcessFacade(Integer currentUserId){
         this.currentUserId = currentUserId;
     }
 
@@ -24,6 +24,7 @@ public class ImageProcessService {
      * @param height 高度
      * @throws InterruptedException
      */
+    @Override
     public void scaleImage(File image, double width, double height)
             throws InterruptedException {
         rateLimiter.acquire();
@@ -38,6 +39,7 @@ public class ImageProcessService {
      * @param content 水印内容
      * @throws InterruptedException
      */
+    @Override
     public void watermark(File image, String content) throws InterruptedException {
         rateLimiter.acquire();
         System.out.println("对图片[" + image.getPath() + "]加水印:" + content);
