@@ -1,0 +1,51 @@
+@startuml
+
+package com.gelvt.gofdp.facade{
+    class BillingService <<计费服务>>{
+        + BILLING_TYPE_PROCESS_IMG: String
+        + charge(userId: Integer, billingType: String): Double
+    }
+
+    class FileManager <<文件管理器>>{
+        + saveFile(file: File)
+    }
+
+    class RateLimiter <<调用频率控制工具>>{
+        - {static} instance: RateLimiter
+        - {static} lck: Object
+        - rate: Integer
+        - random: Random
+
+        + {static} create(rate: Integer): RateLimiter
+        + acquire()
+    }
+
+    class ImageProcessService <<图片处理服务>>{
+        - currentUserId: Integer
+        - rateLimiter: RateLimiter
+        - billingService: BillingService
+        - fileManager: FileManager
+        + ImageProcessService(currentUserId: Integer)
+        + scaleImage(image: File, width: double, height: double)
+        + void watermark(image: File, content: String)
+    }
+
+    ImageProcessService --> BillingService
+    ImageProcessService --> FileManager
+    ImageProcessService --> RateLimiter
+}
+
+package com.gelvt.gofdp{
+    class App <<Client>>{
+        + main(args: String[])
+    }
+}
+
+App ..> ImageProcessService
+
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
