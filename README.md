@@ -13,3 +13,4 @@
 * [创建者模式](/builder)
 * [原型模式](/prototype)
 * [适配器模式](/adapter)
+* [外观模式](/facade)
