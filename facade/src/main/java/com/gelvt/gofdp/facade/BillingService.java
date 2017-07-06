@@ -19,8 +19,8 @@ public class BillingService {
 
         Double actualCharge = 0.03;  //  返回一个模拟的值
 
-        System.out.println("对用户[" + userId + "]收费" + actualCharge +
-                "元，收费项目：" + billingType);
+        System.out.println("对用户[" + userId + "]收费" + actualCharge
+            + "元，收费项目：" + billingType);
 
         return actualCharge;
     }
