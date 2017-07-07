@@ -35,6 +35,7 @@
         <module>prototype</module>
         <module>adapter</module>
         <module>facade</module>
+        <module>flyweight</module>
     </modules>
 
 
