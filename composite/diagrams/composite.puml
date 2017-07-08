@@ -1,0 +1,67 @@
+@startuml
+
+package com.gelvt.gofdp.composite{
+
+    abstract class Control <<控件>> {
+        - visible: boolean
+        - id: String
+        + getId(): String
+        + void setId(id: String)
+        + isVisible(): boolean
+        + setVisible(visible: boolean)
+        + {abstract} render()
+    }
+
+    abstract class CompositeControl <<组合控件>> {
+        - children: List<Control>
+        + render()
+        + addControl(child: Control)
+        + removeControl(child: Control)
+        + getChildren(): List<Control>
+    }
+
+    class Panel <<面板>> {
+        - borderWidth: int
+        + Panel(id: String)
+        + Panel(id: String, borderWidth: int)
+        + getBorderWidth(): int
+        + setBorderWidth(borderWidth: int)
+        + render()
+    }
+
+    class Button <<按钮>> {
+        + Button(id: String)
+    }
+
+    class CheckBox <<复选框>> {
+        + CheckBox(id: String)
+    }
+
+    class TextBox <<文本框>> {
+        + TextBox(id: String)
+    }
+
+    Control <|-- CompositeControl
+    CompositeControl o--> "*"  Control
+    CompositeControl <|-- Panel
+
+    Control <|-- Button
+    Control <|-- CheckBox
+    Control <|-- TextBox
+
+}
+
+package com.gelvt.gofdp{
+    class App <<Client>>{
+        + void main(String[] args)
+    }
+}
+
+App ..> Control
+
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
