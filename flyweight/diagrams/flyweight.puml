@@ -1,0 +1,74 @@
+@startuml
+
+package com.gelvt.gofdp.flyweight{
+
+    enum BlockType <<方块类型>> {
+        SNOW_BRICK
+        STONE_BRICK
+        WOOD_BRICK
+    }
+
+    interface Block <<方块>> {
+        + put(x: int, y: int, z: int)
+        + dismantle(x: int, y: int, z: int)
+        + getBrickTypeName(): String
+    }
+
+    class BlockFactory <<方块工厂>> {
+        - {static} instance: BlockFactory
+        - {static} lockObj: Object
+        - blockMap: Map<BlockType, Block>
+        - BlockFactory()
+        + {static} getInstance(): BlockFactory
+        + getBlock(type: BlockType): Block
+    }
+
+    class SnowBrick <<雪块>> {
+        - typeName: String
+        + SnowBrick(typeName: String)
+        + put(x: int, y: int, z: int)
+        + dismantle(x: int, y: int, z: int)
+        + getBrickTypeName(): String
+    }
+
+    class StoneBrick <<石质砖块>> {
+        - typeName: String
+        + SnowBrick(typeName: String)
+        + put(x: int, y: int, z: int)
+        + dismantle(x: int, y: int, z: int)
+        + getBrickTypeName(): String
+    }
+
+    class WoodBrick <<木质砖块>> {
+        - typeName: String
+        + SnowBrick(typeName: String)
+        + put(x: int, y: int, z: int)
+        + dismantle(x: int, y: int, z: int)
+        + getBrickTypeName(): String
+    }
+
+    BlockFactory ..> BlockFactory : 创建
+
+    BlockFactory ..> Block
+    BlockFactory ..> BlockType
+    Block <|.. SnowBrick
+    Block <|.. StoneBrick
+    Block <|.. WoodBrick
+}
+
+package com.gelvt.gofdp{
+    class App <<Client>>{
+        + void main(String[] args)
+    }
+}
+
+App ..> Block
+App ..> BlockType
+App ..> BlockFactory
+
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
