@@ -14,3 +14,4 @@
 * [原型模式](/prototype)
 * [适配器模式](/adapter)
 * [外观模式](/facade)
+* [享元模式](/flyweight)
