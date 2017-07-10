@@ -1,0 +1,36 @@
+@startuml
+
+package com.gelvt.gofdp.singleton{
+
+
+    class ApplicationContext <<应用上下文>> {
+        - instance : ApplicationContext {static}
+        - lck : Object {static}
+        - configs : Map<String, Object>
+        - ApplicationContext()
+        + getInstance() : ApplicationContext {static}
+        + getConfig(key : String) : Object
+        + setConfig(key : String, value : Object) : Object
+        + removeConfig(key : String) : Object
+        + clearConfig() : void
+        + getConfigKeys() : Set<String>
+    }
+
+    ApplicationContext --> ApplicationContext
+
+}
+
+package com.gelvt.gofdp{
+    class App <<Client>>{
+        + void main(String[] args)
+    }
+}
+
+App ..> ApplicationContext
+
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml

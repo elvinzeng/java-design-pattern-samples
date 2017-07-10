@@ -37,6 +37,7 @@
         <module>facade</module>
         <module>flyweight</module>
         <module>composite</module>
+        <module>decorator</module>
     </modules>
 
 
