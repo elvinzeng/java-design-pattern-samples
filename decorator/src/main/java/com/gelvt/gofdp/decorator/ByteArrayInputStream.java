@@ -10,11 +10,11 @@ import java.io.IOException;
  */
 public class ByteArrayInputStream extends InputStream{
 
-    protected byte buf[];
+    protected byte[] buf;
     protected int pos;
     protected int count;
 
-    public ByteArrayInputStream(byte buf[]) {
+    public ByteArrayInputStream(byte[] buf) {
         this.buf = buf;
         this.pos = 0;
         this.count = buf.length;

@@ -1,23 +1,42 @@
 @startuml
 
-package com.gelvt.gofdp.singleton{
+package com.gelvt.gofdp.decorator{
 
-
-    class ApplicationContext <<应用上下文>> {
-        - instance : ApplicationContext {static}
-        - lck : Object {static}
-        - configs : Map<String, Object>
-        - ApplicationContext()
-        + getInstance() : ApplicationContext {static}
-        + getConfig(key : String) : Object
-        + setConfig(key : String, value : Object) : Object
-        + removeConfig(key : String) : Object
-        + clearConfig() : void
-        + getConfigKeys() : Set<String>
+    abstract class InputStream <<输入流的抽象>> {
+        + {abstract} read(): int
     }
 
-    ApplicationContext --> ApplicationContext
+    class FilterInputStream <<过滤流>> {
+        # in: InputStream
+        # FilterInputStream(in: InputStream)
+        + read(): int
+    }
 
+    class BufferedInputStream <<带缓冲的输入流>>{
+        + BufferedInputStream(in: InputStream)
+        + read(): int
+    }
+
+    class CheckedInputStream <<带计算校验和功能的输入流>> {
+        - cksum: Checksum
+        + CheckedInputStream(in: InputStream, cksum: Checksum)
+        + read(): int
+        + getChecksum(): Checksum
+    }
+
+    class ByteArrayInputStream <<字节数组输入流>> {
+        # buf: byte[]
+        # pos: int
+        # count: int
+        + ByteArrayInputStream(buf: byte[])
+        + read(): int
+    }
+
+    InputStream <|-- FilterInputStream
+    FilterInputStream <|-- BufferedInputStream
+    FilterInputStream <|-- CheckedInputStream
+    FilterInputStream o--> InputStream
+    InputStream <|-- ByteArrayInputStream
 }
 
 package com.gelvt.gofdp{
@@ -26,7 +45,7 @@ package com.gelvt.gofdp{
     }
 }
 
-App ..> ApplicationContext
+App ..> InputStream
 
 
 footer
