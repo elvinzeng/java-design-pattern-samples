@@ -7,15 +7,15 @@ package com.gelvt.gofdp.factorymethod{
     }
 
     class Car <<汽车>> extends Carrier{
-        + {abstract} void transport(goods, destination)
+        + transport(goods, destination)
     }
 
     class Plane <<飞机>> extends Carrier{
-        + {abstract} void transport(goods, destination)
+        + transport(goods, destination)
     }
 
     class Ship <<轮船>> extends Carrier{
-        + {abstract} void transport(goods, destination)
+        + transport(goods, destination)
     }
 
     interface CarrierFactory <<运载工具工厂>>{
@@ -27,11 +27,11 @@ package com.gelvt.gofdp.factorymethod{
     }
 
     class PlaneFactory <<飞机工厂>> implements CarrierFactory{
-            + Carrier newInstance()
+        + Carrier newInstance()
     }
 
     class ShipFactory <<轮船工厂>> implements CarrierFactory{
-            + Carrier newInstance()
+        + Carrier newInstance()
     }
 
     CarrierFactory ..> Carrier : 创建

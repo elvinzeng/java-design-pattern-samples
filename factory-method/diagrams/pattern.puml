@@ -1,0 +1,42 @@
+@startuml
+
+note "工厂方法模式" as name
+
+abstract class Product{
+    + {abstract} void operation(goods, destination)
+}
+
+class ProductA extends Product{
+    + void operation(goods, destination)
+}
+
+class ProductB extends Product{
+    + void operation(goods, destination)
+}
+
+interface ProductFactory{
+    + Product newInstance()
+}
+
+class ProductAFactory implements ProductFactory{
+    + Product newInstance()
+}
+
+class ProductBFactory implements ProductFactory{
+    + Product newInstance()
+}
+
+
+ProductFactory ..> Product : 创建
+
+class Client{
+}
+
+Client ..> ProductFactory
+Client ..> Product
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
