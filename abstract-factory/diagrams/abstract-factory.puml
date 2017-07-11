@@ -3,16 +3,16 @@
 package com.gelvt.gofdp.abstractfactory{
 
     interface DigitalEquipmentFactory <<数码装备工厂>>{
-        Laptop manufactureLaptop();
-        Phone manufacturePhone();
-        SmartWatch manufactureSmartWatch();
+        + {abstract} Laptop manufactureLaptop();
+        + {abstract} Phone manufacturePhone();
+        + {abstract} SmartWatch manufactureSmartWatch();
     }
 
     together {
         class AppleFactory <<苹果公司的工厂>> implements DigitalEquipmentFactory{
-            Laptop manufactureLaptop();
-            Phone manufacturePhone();
-            SmartWatch manufactureSmartWatch();
+            + Laptop manufactureLaptop();
+            + Phone manufacturePhone();
+            + SmartWatch manufactureSmartWatch();
         }
 
         class MacBook <<苹果笔记本>>{
@@ -32,9 +32,9 @@ package com.gelvt.gofdp.abstractfactory{
 
     together {
         class SamsungFactory <<三星公司的工厂>> implements DigitalEquipmentFactory{
-            Laptop manufactureLaptop();
-            Phone manufacturePhone();
-            SmartWatch manufactureSmartWatch();
+            + Laptop manufactureLaptop();
+            + Phone manufacturePhone();
+            + SmartWatch manufactureSmartWatch();
         }
 
         class SamsungNoteBook <<三星笔记本>> {

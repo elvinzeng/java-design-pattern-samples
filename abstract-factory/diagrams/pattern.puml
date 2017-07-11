@@ -1,0 +1,69 @@
+@startuml
+
+note "抽象工厂模式" as name
+
+interface ProductFactory {
+    + {abstract} ProductA manufactureProductA();
+    + {abstract} ProductB manufactureProductB();
+}
+
+class ConcreteProductFactory1 implements ProductFactory{
+    + ProductA manufactureProductA();
+    + ProductB manufactureProductB();
+}
+
+class ProductA1{
+    + operation1()
+}
+
+class ProductB1{
+    + operation2()
+}
+
+class ConcreteProductFactory2 implements ProductFactory{
+    + ProductA manufactureProductA();
+    + ProductB manufactureProductB();
+}
+
+class ProductA2 {
+    + operation1()
+}
+
+class ProductB2 {
+    + operation2()
+}
+
+ConcreteProductFactory1 ..> ProductA1 : 创建
+ConcreteProductFactory1 ..> ProductB1 : 创建
+
+ConcreteProductFactory2 ..> ProductA2 : 创建
+ConcreteProductFactory2 ..> ProductB2 : 创建
+
+
+interface ProductA {
+    + operation1()
+}
+
+interface ProductB {
+    + operation2()
+}
+
+
+ProductA1 ..|> ProductA
+ProductB1 ..|> ProductB
+
+ProductA2 ..|> ProductA
+ProductB2 ..|> ProductB
+
+class Client{
+}
+
+
+Client ..> ProductFactory
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+
+@enduml
