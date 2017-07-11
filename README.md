@@ -16,3 +16,4 @@
 * [外观模式](/facade)
 * [享元模式](/flyweight)
 * [组合模式](/composite)
+* [装饰器模式](/decorator)
