@@ -25,6 +25,12 @@ class Factory {
 
 Factory ..> Product : 创建
 
+class Client{
+
+}
+
+Client ..> Factory
+
 footer
 <font size="20" color="red">http://blog.zenghui.name</font>
 endfooter
