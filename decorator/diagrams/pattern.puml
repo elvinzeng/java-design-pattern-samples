@@ -1,0 +1,40 @@
+@startuml
+
+note "装饰器模式" as name
+
+abstract class Component {
+    + {abstract} operation()
+}
+
+class Decorator {
+    # component: Component
+    + Decorator(component: Component)
+    + operation()
+}
+
+class ConcreteDecoratorA {
+    + ConcreteDecoratorA(component: Component)
+    + operation()
+}
+
+class ConcreteDecoratorB {
+    + ConcreteDecoratorB(component: Component)
+    + operation()
+}
+
+class ConcreteComponent {
+    + operation()
+}
+
+Component <|-- Decorator
+Decorator <|-- ConcreteDecoratorA
+Decorator <|-- ConcreteDecoratorB
+Decorator o--> "*" Component
+Component <|-- ConcreteComponent
+
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
