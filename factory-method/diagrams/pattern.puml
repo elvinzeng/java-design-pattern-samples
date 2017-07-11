@@ -3,15 +3,15 @@
 note "工厂方法模式" as name
 
 abstract class Product{
-    + {abstract} void operation(goods, destination)
+    + {abstract} void operation()
 }
 
 class ProductA extends Product{
-    + void operation(goods, destination)
+    + void operation()
 }
 
 class ProductB extends Product{
-    + void operation(goods, destination)
+    + void operation()
 }
 
 interface ProductFactory{
