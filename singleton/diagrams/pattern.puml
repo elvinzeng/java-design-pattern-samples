@@ -1,0 +1,24 @@
+@startuml
+
+note "单例模式" as name
+
+class Singleton {
+    - instance : ApplicationContext {static}
+    - Singleton()
+    + getInstance() : Singleton {static}
+}
+
+Singleton --> Singleton : 创建
+
+
+class Client{
+}
+
+Client ..> Singleton
+
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
