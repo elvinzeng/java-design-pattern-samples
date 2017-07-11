@@ -1,0 +1,32 @@
+@startuml
+
+note "简单工厂模式" as name
+
+abstract class Product {
+    + {abstract} operation()
+}
+
+class ProductA extends Product{
+    + operation()
+}
+
+class ProductB extends Product{
+    + operation()
+}
+
+class ProductC extends Product{
+    + operation()
+}
+
+
+class Factory {
+    + {static} Product getProduct()
+}
+
+Factory ..> Product : 创建
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml

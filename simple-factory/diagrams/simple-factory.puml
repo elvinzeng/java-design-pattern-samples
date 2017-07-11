@@ -7,15 +7,15 @@ package com.gelvt.gofdp.simplefactory{
     }
 
     class Car <<汽车>> extends Carrier{
-        + {abstract} void transport(goods, destination)
+        + void transport(goods, destination)
     }
 
     class Plane <<飞机>> extends Carrier{
-        + {abstract} void transport(goods, destination)
+        + void transport(goods, destination)
     }
 
     class Ship <<轮船>> extends Carrier{
-        + {abstract} void transport(goods, destination)
+        + void transport(goods, destination)
     }
 
     enum CarrierType <<运载工具类型>> {
