@@ -14,7 +14,7 @@ class Leaf{
 
 }
 
-note top of Leaf : "透明模式下Leaf的add等方法需要通过\n抛出UnsupportedOperationException等方式\n来阻止add等操作。"
+note bottom of Leaf : "透明模式下Leaf的add等方法需要通过\n抛出UnsupportedOperationException等方式\n来阻止add等操作。"
 
 abstract class Composite {
 
