@@ -1,0 +1,50 @@
+@startuml
+
+note "创建者模式" as name
+
+
+class Director {
+    + Director()
+}
+
+interface Builder {
+    + {abstract} buildPart1()
+    + {abstract} buildPart2()
+    + {abstract} buildPart3()
+    + {abstract} build(): Product
+}
+
+class ProductA {
+    + operation()
+}
+
+class ProductB {
+    + operation()
+}
+
+class ConcreteBuilderA{
+    + buildPart1()
+    + buildPart2()
+    + buildPart3()
+    + build(): Product
+}
+
+class ConcreteBuilderB{
+    + buildPart1()
+    + buildPart2()
+    + buildPart3()
+    + build(): Product
+}
+
+Director o--> Builder
+
+Builder <|.. ConcreteBuilderA
+Builder <|.. ConcreteBuilderB
+ConcreteBuilderA ..> ProductA
+ConcreteBuilderB ..> ProductB
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
