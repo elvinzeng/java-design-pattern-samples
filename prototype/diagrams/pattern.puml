@@ -1,0 +1,27 @@
+@startuml
+
+note "原型模式" as name
+
+abstract class Prototype{
+    + {abstract} clone(): Prototype
+}
+
+class ConcretePrototype{
+    + clone(): Prototype
+}
+
+Prototype <|-- ConcretePrototype
+
+
+
+class Client{
+}
+
+Client ..> Prototype
+
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
