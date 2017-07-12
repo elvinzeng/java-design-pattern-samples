@@ -1,0 +1,28 @@
+@startuml
+
+note "适配器模式" as name
+note "对象适配器模式" as mode
+
+interface Target{
+    + {abstract} request()
+}
+
+class Adapter{
+    + request()
+}
+
+class Adaptee {
+    + specificRequest()
+}
+
+Target <|.. Adapter
+Adapter --> Adaptee
+
+Client ..> Target
+
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
