@@ -2,7 +2,12 @@
 
 note "外观模式" as name
 
-class Facade{
+interface Facade{
+    + {abstract} operationX()
+    + {abstract} operationY()
+}
+
+class ConcreteFacade{
     - moduleA: ModuleA
     - moduleB: ModuleB
     - moduleC: ModuleC
@@ -23,9 +28,10 @@ class ModuleC{
     + operation3();
 }
 
-Facade --> ModuleA
-Facade --> ModuleB
-Facade --> ModuleC
+Facade <|.. ConcreteFacade
+ConcreteFacade --> ModuleA
+ConcreteFacade --> ModuleB
+ConcreteFacade --> ModuleC
 
 Client ..> Facade
 
