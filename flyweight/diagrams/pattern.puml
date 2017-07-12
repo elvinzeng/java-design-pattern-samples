@@ -1,0 +1,28 @@
+@startuml
+
+note "享元模式" as name
+
+abstract class Flyweight{
+    + {abstract} operation()
+}
+
+class ConcreteFlyweight{
+    - internalState
+    + operation()
+}
+
+class FlyweightFactory{
+    + getInstance()
+}
+
+FlyweightFactory o--> Flyweight
+Flyweight <|-- ConcreteFlyweight
+
+Client ..> FlyweightFactory
+Client ..> Flyweight
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
