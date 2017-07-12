@@ -1,0 +1,30 @@
+@startuml
+
+note "享元模式" as name
+note "安全模式" as mode
+
+abstract class Component{
+    + {abstract} operation()
+}
+
+class Leaf{
+
+}
+
+abstract class Composite {
+    + add(child: Component)
+    + remove(child: Component)
+    + getChildren(): List<Component>
+}
+
+Component <|-- Leaf
+Component <|-- Composite
+Component "*" <--o Composite
+
+Client --> Component
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml

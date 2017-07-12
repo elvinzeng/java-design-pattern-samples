@@ -1,0 +1,33 @@
+@startuml
+
+note "享元模式" as name
+note "透明模式" as mode
+
+abstract class Component{
+    + {abstract} operation()
+    + add(child: Component)
+    + remove(child: Component)
+    + getChildren(): List<Component>
+}
+
+class Leaf{
+
+}
+
+note top of Leaf : "透明模式下Leaf的add等方法需要通过\n抛出UnsupportedOperationException等方式\n来阻止add等操作。"
+
+abstract class Composite {
+
+}
+
+Component <|-- Leaf
+Component <|-- Composite
+Component "*" <--o Composite
+
+Client --> Component
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
