@@ -1,0 +1,42 @@
+@startuml
+
+note "外观模式" as name
+
+class Facade{
+    - moduleA: ModuleA
+    - moduleB: ModuleB
+    - moduleC: ModuleC
+    + Facade()
+    + operationX()
+    + operationY()
+}
+
+class ModuleA{
+    + operation1();
+}
+
+class ModuleB{
+    + operation2();
+}
+
+class ModuleC{
+    + operation3();
+}
+
+Facade --> ModuleA
+Facade --> ModuleB
+Facade --> ModuleC
+
+Client ..> Facade
+
+note "内部模块/子系统" as n1
+
+n1 .. ModuleA
+n1 .. ModuleB
+n1 .. ModuleC
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
