@@ -38,6 +38,7 @@
         <module>flyweight</module>
         <module>composite</module>
         <module>decorator</module>
+        <module>proxy</module>
     </modules>
 
 
