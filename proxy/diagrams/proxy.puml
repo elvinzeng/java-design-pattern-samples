@@ -1,23 +1,51 @@
 @startuml
 
-package com.gelvt.gofdp.singleton{
+package com.gelvt.gofdp.proxy{
 
-
-    class ApplicationContext <<应用上下文>> {
-        - instance : ApplicationContext {static}
-        - lck : Object {static}
-        - configs : Map<String, Object>
-        - ApplicationContext()
-        + getInstance() : ApplicationContext {static}
-        + getConfig(key : String) : Object
-        + setConfig(key : String, value : Object) : Object
-        + removeConfig(key : String) : Object
-        + clearConfig() : void
-        + getConfigKeys() : Set<String>
+    interface ModelFile <<模型文件>>{
+        + {abstract} getUri(): String
+        + {abstract} getName(): String
+        + {abstract} getPolygons(): List<Polygon>
     }
 
-    ApplicationContext --> ApplicationContext
+    class Vertex <<顶点>>{
+        - x: float
+        - y: float
+        - z: float
+        + getX(): float
+        + setX(x: float)
+        + getY(): float
+        + setY(y: float)
+        + getZ(): float
+        + setZ(z: float)
+    }
 
+    class Polygon <<面>> {
+        - vertices: Vertex[]
+        - normal: Vertex
+        + getVertices(): Vertex[]
+        + setVertices(vertices: Vertex[])
+        + getNormal(): Vertex
+        + setNormal(normal: Vertex)
+    }
+
+    class STLModelFile <<STL模型文件>>{
+        + getUri(): String
+        + getName(): String
+        + getPolygons(): List<Polygon>
+    }
+
+    class STLModelFileProxy <<STL模型文件对象代理>>{
+        + getUri(): String
+        + getName(): String
+        + getPolygons(): List<Polygon>
+    }
+
+    ModelFile <|.. STLModelFile
+    ModelFile <|.. STLModelFileProxy
+    ModelFile ..> Polygon
+    Polygon o--> "*" Vertex
+    STLModelFile <-- STLModelFileProxy
 }
 
 package com.gelvt.gofdp{
@@ -26,8 +54,7 @@ package com.gelvt.gofdp{
     }
 }
 
-App ..> ApplicationContext
-
+App ..> ModelFile
 
 footer
 <font size="20" color="red">http://blog.zenghui.name</font>

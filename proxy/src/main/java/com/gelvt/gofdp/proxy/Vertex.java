@@ -2,7 +2,6 @@ package com.gelvt.gofdp.proxy;
 
 /**
  * 三角面片的顶点
- * copying from：https://github.com/elvinzeng/stl2png/blob/master/src/main/java/com/gelvt/stl2png/model/Vertex.java
  * @author: Elvin Zeng
  * @date: 17-7-14.
  */

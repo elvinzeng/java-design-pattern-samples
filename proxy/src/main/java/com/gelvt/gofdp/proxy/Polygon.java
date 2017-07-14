@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 /**
  * 三角面片信息
- * copying from：https://github.com/elvinzeng/stl2png/blob/master/src/main/java/com/gelvt/stl2png/model/Polygon.java
  * @author: Elvin Zeng
  * @date: 17-7-14.
  */
