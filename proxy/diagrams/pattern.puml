@@ -1,0 +1,27 @@
+@startuml
+
+note "代理模式" as name
+
+class Subject{
+    + {abstract} doSomething()
+}
+
+class RealSubject{
+    + doSomething()
+}
+
+class Proxy{
+    + doSomething()
+}
+
+Subject <|.. RealSubject
+Subject <|.. Proxy
+RealSubject <-- Proxy
+
+Client ..> Subject
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
