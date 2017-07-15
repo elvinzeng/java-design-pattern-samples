@@ -9,6 +9,6 @@ public class Sha1Hasher implements Hasher {
     @Override
     public String hash(byte[] message) {
         //  模拟计算SHA1
-        return "sha1sum(" + new String(message) + ")";
+        return "sha1sum[" + new String(message) + "]";
     }
 }

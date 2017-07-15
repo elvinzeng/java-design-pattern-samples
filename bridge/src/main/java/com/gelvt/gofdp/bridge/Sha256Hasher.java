@@ -9,6 +9,6 @@ public class Sha256Hasher implements Hasher {
     @Override
     public String hash(byte[] message) {
         //  模拟计算SHA256
-        return "sha256sum(" + new String(message) + ")";
+        return "sha256sum[" + new String(message) + "]";
     }
 }
