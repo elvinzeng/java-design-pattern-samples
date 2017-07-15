@@ -1,0 +1,41 @@
+@startuml
+
+note "桥接模式" as name
+
+abstract class Abstraction{
+    - implementor: Implementor
+    + Abstraction(implementor: Implementor)
+    + {abstract} operation()
+}
+
+class RefinedAbstraction{
+    + RefinedAbstraction(implementor: Implementor)
+    + operation()
+}
+
+Abstraction <|-- RefinedAbstraction
+
+interface Implementor{
+    + {abstract} doSomething()
+}
+
+class ConcreteImplementorA{
+    + doSomething()
+}
+
+class ConcreteImplementorB{
+    + doSomething()
+}
+
+Implementor <|.. ConcreteImplementorA
+Implementor <|.. ConcreteImplementorB
+
+Abstraction o--> Implementor
+
+Client ..> Abstraction
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
