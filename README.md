@@ -18,3 +18,9 @@
 * [组合模式](/composite)
 * [装饰器模式](/decorator)
 * [代理模式](/proxy)
+
+# 打个广告
+我是在职的程序员，业余时间挤出时间坚持写东西其实需要很强的毅力，偶尔我也希望有人能鼓励一下！  
+如果你觉得我的[《GoF设计模式》系列文章](http://blog.zenghui.name/2017/06/10/gof-design-pattern-overview/)或者本项目的示例代码写得好，
+可以帮我在戳Github上的Star给我加星点赞，或者去[这里](http://blog.zenghui.name/2017/06/10/gof-design-pattern-overview/)翻到页面最下面戳打赏。  
+不胜荣幸！你的鼓励将成为我继续创作的动力！
