@@ -29,23 +29,23 @@ package com.gelvt.gofdp.proxy{
         + setNormal(normal: Vertex)
     }
 
-    class STLModelFile <<STL模型文件>>{
+    class StlModelFile <<STL模型文件>>{
         + getUri(): String
         + getName(): String
         + getPolygons(): List<Polygon>
     }
 
-    class STLModelFileProxy <<STL模型文件对象代理>>{
+    class StlModelFileProxy <<STL模型文件对象代理>>{
         + getUri(): String
         + getName(): String
         + getPolygons(): List<Polygon>
     }
 
-    ModelFile <|.. STLModelFile
-    ModelFile <|.. STLModelFileProxy
+    ModelFile <|.. StlModelFile
+    ModelFile <|.. StlModelFileProxy
     ModelFile ..> Polygon
     Polygon o--> "*" Vertex
-    STLModelFile <-- STLModelFileProxy
+    StlModelFile <-- StlModelFileProxy
 }
 
 package com.gelvt.gofdp{

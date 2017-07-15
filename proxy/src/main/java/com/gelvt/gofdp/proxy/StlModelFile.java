@@ -7,13 +7,13 @@ import java.util.List;
  * @author: Elvin Zeng
  * @date: 17-7-13.
  */
-public class STLModelFile implements ModelFile{
+public class StlModelFile implements ModelFile{
 
     private String uri;
     private String name;
     private List<Polygon> polygons;
 
-    public STLModelFile(String uri, String name, List<Polygon> polygons){
+    public StlModelFile(String uri, String name, List<Polygon> polygons){
         this.uri = uri;
         this.name = name;
         this.polygons = polygons;

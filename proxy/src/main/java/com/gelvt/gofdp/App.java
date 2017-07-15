@@ -2,7 +2,7 @@ package com.gelvt.gofdp;
 
 import com.gelvt.gofdp.proxy.ModelFile;
 import com.gelvt.gofdp.proxy.Polygon;
-import com.gelvt.gofdp.proxy.STLModelFileProxy;
+import com.gelvt.gofdp.proxy.StlModelFileProxy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public class App {
     private static ModelFile createModelProxy(){
         long t1 = System.currentTimeMillis();
         System.out.println("正在创建模型文件代理对象...");
-        ModelFile modelFile = new STLModelFileProxy(
+        ModelFile modelFile = new StlModelFileProxy(
                 "https://github.com/elvinzeng/stl2png/blob/master/test_stl/Hulk.stl",
                 "Hulk");
         long t2 = System.currentTimeMillis();

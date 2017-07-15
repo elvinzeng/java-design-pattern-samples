@@ -8,12 +8,12 @@ import java.util.List;
  * @author: Elvin Zeng
  * @date: 17-7-14.
  */
-public class STLModelFileProxy implements ModelFile{
+public class StlModelFileProxy implements ModelFile{
     private String uri;
     private String name;
-    private STLModelFile realModelFile;
+    private StlModelFile realModelFile;
 
-    public STLModelFileProxy(String uri, String name) {
+    public StlModelFileProxy(String uri, String name) {
         this.uri = uri;
         this.name = name;
     }
@@ -40,7 +40,7 @@ public class STLModelFileProxy implements ModelFile{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            this.realModelFile = new STLModelFile(uri, name, polygons);
+            this.realModelFile = new StlModelFile(uri, name, polygons);
         }
         return this.realModelFile.getPolygons();
     }
