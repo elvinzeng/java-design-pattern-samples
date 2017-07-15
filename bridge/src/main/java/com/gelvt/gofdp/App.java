@@ -17,10 +17,10 @@ public class App {
 
         String message = "Hi! My name is Elvin Zeng.";
 
-        SignTool signTool = new RSASignTool(SECRET_KEY, sha1Hasher);
+        SignTool signTool = new RsaSignTool(SECRET_KEY, sha1Hasher);
         displayAsString(signTool.sign(message.getBytes()));
 
-        signTool = new RSASignTool(SECRET_KEY, sha256Hasher);
+        signTool = new RsaSignTool(SECRET_KEY, sha256Hasher);
         displayAsString(signTool.sign(message.getBytes()));
 
         signTool = new EccSignTool(SECRET_KEY, sha1Hasher);

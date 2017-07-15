@@ -5,8 +5,8 @@ package com.gelvt.gofdp.bridge;
  * @author: Elvin Zeng
  * @date: 17-7-15.
  */
-public class RSASignTool extends SignTool {
-    public RSASignTool(String secretkey, Hasher hasher) {
+public class RsaSignTool extends SignTool {
+    public RsaSignTool(String secretkey, Hasher hasher) {
         super(secretkey, hasher);
     }
 

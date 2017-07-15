@@ -1,0 +1,59 @@
+@startuml
+
+package com.gelvt.gofdp.bridge{
+
+    abstract class SignTool <<数字签名工具>> {
+        - secretkey: String
+        - hasher: Hasher
+        + SignTool(secretkey: String, hasher: Hasher)
+        + {abstract} sign(message: byte[]): byte[]
+        + getSecretkey(): String
+        + getHasher(): Hasher
+    }
+
+    interface Hasher <<散列工具>>{
+        hash(message: byte[]): String
+    }
+
+    SignTool o--> Hasher
+
+    class Sha1Hasher <<Sha1 Hash计算器>>{
+    }
+
+    class Sha256Hasher <<Sha256 Hash计算器>>{
+    }
+
+    Hasher <|.. Sha1Hasher
+    Hasher <|.. Sha256Hasher
+
+    class RsaSignTool <<基于RSA算法的数字签名工具>>{
+        + RsaSignTool(secretkey: String, hasher: Hasher)
+        + sign(message: byte[]): byte[]
+        - encrypt(message: byte[]): byte[]
+    }
+
+    class EccSignTool <<基于ECC算法的数字签名工具>>{
+        + EccSignTool(secretkey: String, hasher: Hasher)
+        + sign(message: byte[]): byte[]
+        - encrypt(message: byte[]): byte[]
+    }
+
+    SignTool <|-- RsaSignTool
+    SignTool <|-- EccSignTool
+
+}
+
+package com.gelvt.gofdp{
+    class App <<Client>>{
+        + void main(String[] args)
+    }
+}
+
+App ..> SignTool
+
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
