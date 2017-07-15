@@ -12,7 +12,7 @@ package com.gelvt.gofdp.bridge{
     }
 
     interface Hasher <<散列工具>>{
-        hash(message: byte[]): String
+        + {abstract} hash(message: byte[]): String
     }
 
     SignTool o--> Hasher
@@ -40,6 +40,13 @@ package com.gelvt.gofdp.bridge{
 
     SignTool <|-- RsaSignTool
     SignTool <|-- EccSignTool
+
+    class ArrayUtils <<数组操作工具类>>{
+        + {static} concat(arrays: byte[]... ): byte[]
+    }
+
+    Sha1Hasher ..> ArrayUtils
+    Sha256Hasher ..> ArrayUtils
 
 }
 
