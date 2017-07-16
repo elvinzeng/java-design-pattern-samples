@@ -18,6 +18,7 @@
 * [组合模式](/composite)
 * [装饰器模式](/decorator)
 * [代理模式](/proxy)
+* [桥接模式](/bridge)
 
 
 # 打个广告  
