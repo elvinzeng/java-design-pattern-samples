@@ -40,6 +40,7 @@
         <module>decorator</module>
         <module>proxy</module>
         <module>bridge</module>
+        <module>strategy</module>
     </modules>
 
 
