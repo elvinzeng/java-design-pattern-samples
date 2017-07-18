@@ -19,6 +19,7 @@
 * [装饰器模式](/decorator)
 * [代理模式](/proxy)
 * [桥接模式](/bridge)
+* [策略模式](/strategy)
 
 
 # 打个广告  
