@@ -1,0 +1,42 @@
+@startuml
+
+package com.gelvt.gofdp.strategy{
+
+    interface DiscountStrategy <<折扣策略>> {
+        + {abstract} discount(originalPrice: double): double
+    }
+
+    class NormalDiscountStrategy <<普通客户折扣策略>> {
+        + discount(originalPrice: double): double
+    }
+
+    class VipDiscountStrategy <<VIP客户折扣策略>> {
+        + discount(originalPrice: double): double
+    }
+
+    class PriceCalculator <<价格计算器>> {
+        - discountStrategy: DiscountStrategy
+        + PriceCalculator(discountStrategy: DiscountStrategy)
+        + setDiscountStrategy(discountStrategy: DiscountStrategy)
+        + calculate(price: double...): double
+    }
+
+    DiscountStrategy <|.. NormalDiscountStrategy
+    DiscountStrategy <|.. VipDiscountStrategy
+    PriceCalculator --> DiscountStrategy
+
+}
+
+package com.gelvt.gofdp{
+    class App <<Client>>{
+        + void main(String[] args)
+    }
+}
+
+App ..> PriceCalculator
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
