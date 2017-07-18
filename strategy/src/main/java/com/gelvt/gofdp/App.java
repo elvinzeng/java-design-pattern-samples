@@ -1,13 +1,10 @@
 package com.gelvt.gofdp;
 
-import com.gelvt.gofdp.strategy.FileCompressor;
-import com.gelvt.gofdp.strategy.GzipCompressionStrategy;
-import com.gelvt.gofdp.strategy.ZipCompressionStrategy;
+import com.gelvt.gofdp.strategy.NormalDiscountStrategy;
+import com.gelvt.gofdp.strategy.PriceCalculator;
+import com.gelvt.gofdp.strategy.VipDiscountStrategy;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 
 /**
  * Client
@@ -16,36 +13,14 @@ import java.io.OutputStreamWriter;
  */
 public class App {
     public static void main(String[] args) throws IOException {
-        //  这里先生成一个测试文件和一个目标路径
-        String sourceFilePath = generateSourceFileForTest();
-        String targetFilePath = generateTargetFileForTest();
+        PriceCalculator calculator = new PriceCalculator(new NormalDiscountStrategy());
+        System.out.println("普通客户购买:18, 200, 1300, 7200="
+                + calculator.calculate(18, 200, 1300, 7200));
 
-        FileCompressor compressor = new FileCompressor(new ZipCompressionStrategy());
-        compressor.compactFile(sourceFilePath, targetFilePath);
-
-        //  这里先生成一个测试文件和一个目标路径
-        sourceFilePath = generateSourceFileForTest();
-        targetFilePath = generateTargetFileForTest();
-
-        compressor = new FileCompressor(new GzipCompressionStrategy());
-        compressor.compactFile(sourceFilePath, targetFilePath);
-
+        calculator = new PriceCalculator(new VipDiscountStrategy());
+        System.out.println("VIP客户购买:18, 200, 1300, 7200="
+                + calculator.calculate(18, 200, 1300, 7200));
 
     }
 
-    private static String generateSourceFileForTest() throws IOException {
-        File sourceFile = File.createTempFile("FileCompressor_", ".txt");
-        FileOutputStream fos = new FileOutputStream(sourceFile);
-        OutputStreamWriter writer = new OutputStreamWriter(fos);
-        writer.write("https://github.com/elvinzeng/java-design-pattern-samples");
-        writer.flush();
-        writer.close();
-        fos.close();
-        return sourceFile.getPath();
-    }
-
-    private static String generateTargetFileForTest() throws IOException {
-        File targetFile = File.createTempFile("FileCompressor_", ".txt");
-        return targetFile.getPath();
-    }
 }
