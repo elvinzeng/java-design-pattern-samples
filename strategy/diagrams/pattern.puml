@@ -1,0 +1,33 @@
+@startuml
+
+note "策略模式" as name
+
+class Context{
+    - strategy: Strategy
+    + Context()
+    + contextInterface()
+}
+
+interface Strategy{
+    + {abstract} strategyInterface()
+}
+
+class ConcreteStrategyA{
+    + strategyInterface()
+}
+
+class ConcreteStrategyB{
+    + strategyInterface()
+}
+
+Context o--> Strategy
+Strategy <|.. ConcreteStrategyA
+Strategy <|.. ConcreteStrategyB
+
+Client ..> Context
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
