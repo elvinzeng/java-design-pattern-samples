@@ -41,6 +41,7 @@
         <module>proxy</module>
         <module>bridge</module>
         <module>strategy</module>
+        <module>state</module>
     </modules>
 
 
