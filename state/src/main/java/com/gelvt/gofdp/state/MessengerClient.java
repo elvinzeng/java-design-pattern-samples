@@ -10,12 +10,8 @@ public class MessengerClient {
     private ClientState state;
     private String username;
 
-    public MessengerClient(){
-        this.state = new OfflineState(this);
-    }
-
-    public MessengerClient(ClientState state) {
-        this.state = state;
+    public MessengerClient(String username) {
+        this.username = username;
     }
 
     public void setState(ClientState state) {
@@ -24,14 +20,6 @@ public class MessengerClient {
 
     public String getUsername() {
         return username;
-    }
-
-    public void login(String username, String password){
-        //  这里可以和服务器通讯验证用户帐号
-        //  这里只是演示，直接登录成功
-
-        System.out.println(String.format("用户[%s]登录成功", username));
-        this.username = username;
     }
 
     /**

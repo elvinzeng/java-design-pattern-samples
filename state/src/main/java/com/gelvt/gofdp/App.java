@@ -1,5 +1,6 @@
 package com.gelvt.gofdp;
 
+import com.gelvt.gofdp.state.LockedState;
 import com.gelvt.gofdp.state.MessengerClient;
 import com.gelvt.gofdp.state.OfflineState;
 import com.gelvt.gofdp.state.OnlineState;
@@ -11,13 +12,21 @@ import com.gelvt.gofdp.state.OnlineState;
  */
 public class App {
     public static void main(String[] args){
-        MessengerClient client = new MessengerClient();
+        MessengerClient client = new MessengerClient("elvinzeng");
+        client.setState(new OfflineState(client));
 
         client.showChatForm();
-        client.sendMessage("hi Elvin!", "zenghui");
+        client.sendMessage("hi zenghui!", "zenghui");
+        System.out.println("------------");
 
-        client.login("elvinzeng", "123456");
+        client.setState(new OnlineState(client));
         client.showChatForm();
-        client.sendMessage("hi Elvin!", "zenghui");
+        client.sendMessage("hi zenghui!", "zenghui");
+        System.out.println("------------");
+
+        client.setState(new LockedState(client));
+        client.showChatForm();
+        client.sendMessage("hi zenghui!", "zenghui");
+        System.out.println("------------");
     }
 }
