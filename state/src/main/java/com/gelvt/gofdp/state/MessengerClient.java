@@ -10,7 +10,8 @@ public class MessengerClient {
     private ClientState state;
     private String username;
 
-    public MessengerClient(String username) {
+    public MessengerClient(ClientState state, String username) {
+        this.state = state;
         this.username = username;
     }
 

@@ -12,8 +12,7 @@ import com.gelvt.gofdp.state.OnlineState;
  */
 public class App {
     public static void main(String[] args){
-        MessengerClient client = new MessengerClient("elvinzeng");
-        client.setState(new OfflineState(client));
+        MessengerClient client = new MessengerClient(new OfflineState(), "elvinzeng");
 
         client.showChatForm();
         client.sendMessage("hi zenghui!", "zenghui");

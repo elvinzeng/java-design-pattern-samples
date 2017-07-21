@@ -7,12 +7,6 @@ package com.gelvt.gofdp.state;
  */
 public class OfflineState implements ClientState {
 
-    private MessengerClient client;
-
-    public OfflineState(MessengerClient client) {
-        this.client = client;
-    }
-
     @Override
     public void showChatForm() {
         System.out.println("聊天窗口弹出来了！你可以开始聊天了。");
