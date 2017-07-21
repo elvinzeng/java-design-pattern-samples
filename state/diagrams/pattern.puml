@@ -1,0 +1,35 @@
+@startuml
+
+note "状态模式" as name
+
+class Context{
+    - state : State
+    + Context(state : State)
+    + request() : void
+    + setState(state : State) : void
+}
+
+interface State {
+    + {abstract} handle(context : Context) : void
+}
+
+class ConcreteStateA {
+    + handle(context : Context) : void
+}
+
+class ConcreteStateB {
+    + handle(context : Context) : void
+}
+
+Context o--> State
+State <|.. ConcreteStateA
+State <|.. ConcreteStateB
+
+Client ..> Context
+
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
