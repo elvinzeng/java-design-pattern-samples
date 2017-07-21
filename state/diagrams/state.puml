@@ -1,0 +1,23 @@
+@startuml
+
+package com.gelvt.gofdp.state{
+
+
+
+
+}
+
+package com.gelvt.gofdp{
+    class App <<Client>>{
+        + void main(String[] args)
+    }
+}
+
+
+
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
