@@ -2,8 +2,46 @@
 
 package com.gelvt.gofdp.state{
 
+    interface ClientState<<即时通讯软件客户端状态>> {
+        + {abstract} showChatForm() : void
+        + {abstract} sendMessage(message : String, receiver : String) : void
+    }
 
+    class MessengerClient <<即时通讯软件客户端>> {
+        - state : ClientState
+        - username : String
+        + MessengerClient(username : String)
+        + setState(state : ClientState) : void
+        + getUsername() : String
+        + showChatForm() : void
+        + sendMessage(message : String, receiver : String) : void
+    }
 
+    class OnlineState <<在线状态（正常状态）>> {
+        - MessengerClient client;
+        + OnlineState(client : MessengerClient)
+        + showChatForm() : void
+        + sendMessage(message : String, receiver : String) : void
+    }
+
+    class OfflineState <<离线状态>> {
+        - MessengerClient client;
+        + OnlineState(client : MessengerClient)
+        + showChatForm() : void
+        + sendMessage(message : String, receiver : String) : void
+    }
+
+    class LockedState <<客户端锁定状态>> {
+        - MessengerClient client;
+        + OnlineState(client : MessengerClient)
+        + showChatForm() : void
+        + sendMessage(message : String, receiver : String) : void
+    }
+
+    MessengerClient o--> ClientState
+    ClientState <|.. OnlineState
+    ClientState <|.. OfflineState
+    ClientState <|.. LockedState
 
 }
 
@@ -13,7 +51,7 @@ package com.gelvt.gofdp{
     }
 }
 
-
+App ..> MessengerClient
 
 
 footer
