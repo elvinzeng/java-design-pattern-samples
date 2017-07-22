@@ -42,6 +42,7 @@
         <module>bridge</module>
         <module>strategy</module>
         <module>state</module>
+        <module>chain-of-responsibility</module>
     </modules>
 
 
