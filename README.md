@@ -21,6 +21,7 @@
 * [桥接模式](/bridge)
 * [策略模式](/strategy)
 * [状态模式](/state)
+* [职责链模式](/chain-of-responsibility)
 
 
 # 打个广告  
