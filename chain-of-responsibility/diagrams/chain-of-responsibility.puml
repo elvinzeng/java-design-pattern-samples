@@ -1,0 +1,82 @@
+@startuml
+
+package com.gelvt.gofdp.chain{
+
+    class HttpRequest <<HTTP请求>>{
+        - String url;
+        - Object user;
+        - String currentRoleName;
+        + HttpRequest(url : String, user : Object, currentRoleName : String)
+        + getUrl() : String
+        + setUrl(String url) : void
+        + getUser() : Object
+        + setUser(Object user) : void
+        + getCurrentRoleName() : String
+        + setCurrentRoleName(currentRoleName : String) : void
+    }
+
+    class HttpResponse <<HTTP响应>> {
+        + writeString(String str) : void
+    }
+
+    abstract class SecurityFilter <<安全过滤器>> {
+        - next : SecurityFilter
+        + SecurityFilter()
+        + SecurityFilter(next : SecurityFilter)
+        + getNext() : SecurityFilter
+        + setNext(next : SecurityFilter) : void
+        # doNext(request : HttpRequest, response : HttpResponse)
+        + {abstract} void doFilter(request : HttpRequest, response : HttpResponse)
+    }
+
+    class AnonymousFilter <<匿名访问过滤器>>{
+        - urlPattern : String
+        + AnonymousFilter(urlPattern : String)
+        + getUrlPattern() : String
+        + setUrlPattern(urlPattern : String) : void
+        + doFilter(request : HttpRequest, response : HttpResponse)
+    }
+
+    class UserFilter <<认证用户访问过滤器>>{
+        - urlPattern : String
+        + UserFilter(urlPattern : String)
+        + getUrlPattern() : String
+        + setUrlPattern(urlPattern : String) : void
+        + doFilter(request : HttpRequest, response : HttpResponse)
+    }
+
+    class RoleFilter <<角色授权访问过滤器>>{
+        - urlPattern : String
+        - roleName : String
+        + RoleFilter(urlPattern : String, roleName : String)
+        + getUrlPattern() : String
+        + setUrlPattern(String urlPattern) : void
+        + getRoleName() : String
+        + setRoleName(roleName : String) : void
+        + doFilter(request : HttpRequest, response : HttpResponse)
+    }
+
+    HttpRequest <.. SecurityFilter
+    HttpResponse <.. SecurityFilter
+    SecurityFilter <|-- AnonymousFilter
+    SecurityFilter <|-- UserFilter
+    SecurityFilter <|-- RoleFilter
+
+}
+
+package com.gelvt.gofdp{
+    class App <<Client>>{
+        + main(args : String[]) : void
+    }
+}
+
+App ..> SecurityFilter
+App ..> HttpRequest
+App ..> HttpResponse
+
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
