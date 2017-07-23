@@ -1,0 +1,28 @@
+@startuml
+
+note "职责链模式" as name
+
+abstract class Handler{
+    - successor : Handler
+    + handleRequest() : void
+}
+
+class ConcreteHandlerA{
+    + handleRequest() : void
+}
+
+class ConcreteHandlerB{
+    + handleRequest() : void
+}
+
+Handler "1" o--> "1" Handler
+Handler <|-- ConcreteHandlerA
+Handler <|-- ConcreteHandlerB
+
+Client ..> Handler
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
