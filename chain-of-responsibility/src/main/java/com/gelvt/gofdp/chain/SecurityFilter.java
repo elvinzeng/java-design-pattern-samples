@@ -27,7 +27,7 @@ public abstract class SecurityFilter {
      * @param request 请求
      * @param response 响应
      */
-    public void doNext(HttpRequest request, HttpResponse response){
+    protected void doNext(HttpRequest request, HttpResponse response){
         if (null != next){
             next.doFilter(request, response);
         }else{
