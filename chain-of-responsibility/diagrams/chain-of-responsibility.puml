@@ -61,7 +61,7 @@ package com.gelvt.gofdp.chain{
     SecurityFilter <|-- AnonymousFilter
     SecurityFilter <|-- UserFilter
     SecurityFilter <|-- RoleFilter
-
+    SecurityFilter --> SecurityFilter
 }
 
 package com.gelvt.gofdp{
