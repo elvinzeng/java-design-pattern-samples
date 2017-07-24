@@ -43,6 +43,7 @@
         <module>strategy</module>
         <module>state</module>
         <module>chain-of-responsibility</module>
+        <module>observer</module>
     </modules>
 
 
