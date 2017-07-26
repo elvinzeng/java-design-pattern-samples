@@ -10,13 +10,11 @@ import java.util.List;
  */
 public class ServerStateMonitor {
     private List<ServerStateListener> serverStateChangeListeners;
-    private ServerState state;
     private boolean monitorStarted;
     private Thread worker;
 
     public ServerStateMonitor(){
         this.serverStateChangeListeners = new ArrayList<>();
-        state = ServerState.DOWN;
         monitorStarted = false;
     }
 
@@ -35,6 +33,7 @@ public class ServerStateMonitor {
         this.worker = new Thread(){
             @Override
             public void run(){
+                ServerState state = ServerState.DOWN;
                 while (monitorStarted){
                     //  这里仅是模拟程序
                     if (state == ServerState.DOWN){

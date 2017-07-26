@@ -1,0 +1,50 @@
+@startuml
+
+package com.gelvt.gofdp.observer{
+
+    enum ServerState <<服务器状态>> {
+        RUNNING,
+        DOWN
+    }
+
+    interface ServerStateListener <<服务器状态变更监听器>>{
+        + {abstract} stateChanged(sender : ServerStateMonitor, currentState : ServerState)
+    }
+
+    class ServerStateMonitor <<服务器状态监视组件>> {
+        - serverStateChangeListeners : List<ServerStateListener>
+        - state : ServerState
+        - monitorStarted : boolean
+        - worker : Thread
+        + ServerStateMonitor()
+        + addStateChangeListener(listener : ServerStateListener) : void
+        + removeStateChangeListener(listener : ServerStateListener) : void
+        + start() : void
+        + stop() : void
+    }
+
+    class DefaultServerStateListener <<默认的服务器状态监听器>> {
+        + stateChanged(sender : ServerStateMonitor, currentState : ServerState) : void
+    }
+
+    ServerState <.. ServerStateMonitor
+    ServerState <.. ServerStateListener
+    ServerStateMonitor o--> ServerStateListener
+    ServerStateListener <|.. DefaultServerStateListener
+    ServerStateMonitor <.. DefaultServerStateListener
+}
+
+package com.gelvt.gofdp{
+    class App <<Client>>{
+        + main(args : String[]) : void
+    }
+}
+
+App ..> ServerStateMonitor
+
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
