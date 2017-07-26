@@ -1,0 +1,34 @@
+@startuml
+
+note "观察者模式" as name
+
+class Subject{
+    + attach(o : Observer) : void
+    + detach(o : Observer) : void
+    + notify() : void
+}
+
+interface Observer{
+    + {abstract} update() : void
+}
+
+class ConcreteSubject{
+
+}
+
+class ConcreteObserver{
+    + update() : void
+}
+
+Subject <|-- ConcreteSubject
+Observer <|.. ConcreteObserver
+Subject o--> Observer
+ConcreteSubject <.. ConcreteObserver
+
+Client ..> Subject
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
