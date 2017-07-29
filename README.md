@@ -23,6 +23,7 @@
 * [状态模式](/state)
 * [职责链模式](/chain-of-responsibility)
 * [观察者模式](/observer)
+* [模板方法模式](/template)
 
 
 # 打个广告  
