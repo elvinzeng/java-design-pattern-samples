@@ -1,0 +1,67 @@
+@startuml
+
+package com.gelvt.gofdp.template{
+
+    class HtmlTextWriter <<Html代码构建工具>> {
+        + write(html : String) : void
+    }
+
+    abstract class WebControl <<仿ASP.NET Web控件抽象基类>> {
+        - id : String
+        # {abstract} getTagName() : String
+        # {abstract} getAttributes() : Map<String, String>
+        # {abstract} renderContents(HtmlTextWriter writer) : void
+        + renderWebControl() : void
+    }
+
+    class Label <<Label控件>>{
+        - targetInputElement : String
+        - content : String
+        + getContent() : String
+        + setContent(String content) : void
+        + getTargetInputElement() : String
+        + setTargetInputElement(targetInputElement : String) : void
+        # getTagName() : String
+        # getAttributes() : Map<String, String>
+        # void renderContents(writer : HtmlTextWriter) : void
+    }
+
+    enum Type <<按钮类型>> {
+        BUTTON("button"),
+        RESET("reset"),
+        SUBMIT("submit")
+        + getValue() : String
+    }
+
+    class Button <<按钮控件>>{
+        - type : Type
+        - content : String
+        + getContent() : String
+        + setContent(String content) : void
+        + getType() : Type
+        + setType(type : Type) : void
+        # getTagName() : String
+        # getAttributes() : Map<String, String>
+        # void renderContents(writer : HtmlTextWriter) : void
+    }
+
+    WebControl ..> HtmlTextWriter
+    WebControl <|-- Label
+    WebControl <|-- Button
+    Type <.. Button
+
+}
+
+package com.gelvt.gofdp{
+    class App <<Client>>{
+        + void main(String[] args)
+    }
+}
+
+App ..> WebControl
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
