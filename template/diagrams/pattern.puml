@@ -1,0 +1,17 @@
+@startuml
+
+note "模板方法模式" as name
+
+abstract class AbstractClass{
+    # doSomething() : void
+    + templateMethod() : void
+
+}
+
+AbstractClass <|-- ConcreteClass
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
