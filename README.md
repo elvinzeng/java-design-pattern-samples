@@ -24,6 +24,7 @@
 * [职责链模式](/chain-of-responsibility)
 * [观察者模式](/observer)
 * [模板方法模式](/template)
+* [命令模式](/command)
 
 
 # 打个广告  
