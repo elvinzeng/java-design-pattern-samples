@@ -1,0 +1,61 @@
+@startuml
+
+package com.gelvt.gofdp.template{
+
+    interface Command <<命令>>{
+        + {abstract} setParameters(parameters : String[]) : void
+        + {abstract} execute() : void
+    }
+
+    class MessageHandler <<消息处理器>> {
+        - commandMap : Map<String, String>
+        + MessageHandler()
+        + registerCommand(commandName : String, commandClassName : String) : void
+        + process(String message) : void
+    }
+
+    class UserService <<用户系统相关服务>>{
+        + login(username : String, password : String) : void
+    }
+
+    class MessageHistoryService <<消息历史服务>> {
+        + saveMessageHistory(sender : String, receiver : String, message : String) : void
+    }
+
+    class LoginCommand <<登录命令>>{
+        - String[] parameters;
+        - userService : UserService
+        + setParameters(parameters : String[]) : void
+        + execute() : void
+    }
+
+    class SendMessageCommand <<发送消息命令>>{
+        - String[] parameters;
+        - messageHistoryService : MessageHistoryService
+        + setParameters(parameters : String[]) : void
+        + execute() : void
+    }
+
+    MessageHandler ..> Command
+    Command <|.. LoginCommand
+    Command <|.. SendMessageCommand
+    LoginCommand ..> UserService
+    SendMessageCommand ..> MessageHistoryService
+
+
+}
+
+package com.gelvt.gofdp{
+    class App <<Client>>{
+        + void main(String[] args)
+    }
+}
+
+App ..> MessageHandler
+App ..> Command
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
