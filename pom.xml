@@ -45,6 +45,7 @@
         <module>chain-of-responsibility</module>
         <module>observer</module>
         <module>template</module>
+        <module>command</module>
     </modules>
 
 
