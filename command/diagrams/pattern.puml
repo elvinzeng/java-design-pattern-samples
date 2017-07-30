@@ -1,0 +1,33 @@
+@startuml
+
+note "命令模式" as name
+
+class Invoker{
+
+}
+
+interface Command{
+    + {abstract} execute() : void
+}
+
+class ConcreteCommand{
+
+}
+
+class Receiver{
+    + action()
+}
+
+Invoker ..> Command
+Command <|.. ConcreteCommand
+ConcreteCommand ..> Receiver
+
+Client ..> Invoker
+Client ..> Receiver
+
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
