@@ -46,6 +46,7 @@
         <module>observer</module>
         <module>template</module>
         <module>command</module>
+        <module>memento</module>
     </modules>
 
 
