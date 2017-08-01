@@ -1,0 +1,57 @@
+@startuml
+
+package com.gelvt.gofdp.memento{
+    class Version <<版本>>{
+        - content : String
+        - author : String
+        + getContent() : String
+        + setContent(content : String) : void
+        + getAuthor() : String
+        + setAuthor(author : String) : void
+        + toString() : String
+    }
+
+    class History <<编辑器历史记录>> {
+        - versions : List<Version>
+        + contains(o : Object) : boolean
+        + iterator() : Iterator<Version>
+        + add(Version version) : boolean
+        + remove(Object o) : boolean
+        + clear() : void
+        + get(index : int) : Version
+        + set(index : int, element : Version) : Version
+        + remove(index : int) : Version
+        + indexOf(Object o) : int
+        + pop() : Version
+    }
+
+    class Editor <<文本编辑器>> {
+        - author : String
+        - content : String
+        + getAuthor() : String
+        + setAuthor(author : String) : void
+        + getContent() : String
+        + setContent(content : String) : void
+        + snapshoot() : Version
+        + revertSnapshot(version : Version) : void
+        + toString() : String
+    }
+
+    Editor ..> Version
+    Version <..o History
+
+}
+
+package com.gelvt.gofdp{
+    class App <<Client>>{
+        + void main(String[] args)
+    }
+}
+
+App ..> Editor
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml

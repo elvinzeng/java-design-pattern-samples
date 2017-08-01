@@ -1,7 +1,7 @@
 package com.gelvt.gofdp.memento;
 
 /**
- * 文本编辑器模型
+ * 文本编辑器
  * @author: Elvin Zeng
  * @date: 17-7-31.
  */
