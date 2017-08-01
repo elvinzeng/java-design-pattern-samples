@@ -1,0 +1,27 @@
+@startuml
+
+note "备忘录模式" as name
+
+class Mememto{
+    - state : Object
+}
+
+class Originator{
+    + createMememto() : Mememto
+    + setMememto(mememto : Mememto) : void
+}
+
+class Caretaker{
+
+}
+
+Originator ..> Mememto
+Mememto <..o Caretaker
+
+Client ..> Originator
+
+footer
+<font size="20" color="red">http://blog.zenghui.name</font>
+endfooter
+
+@enduml
