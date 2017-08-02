@@ -3,7 +3,7 @@
 note "备忘录模式" as name
 
 class Mememto{
-    - state : Object
+    - state
 }
 
 class Originator{
