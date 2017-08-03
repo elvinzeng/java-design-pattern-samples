@@ -27,7 +27,7 @@ public class App {
         System.out.println("编辑器当前状态：" + editor);
 
         System.out.println("撤回上一个版本");
-        editor.revertSnapshot(history.pop());
+        editor.revertSnapshot(history.pop());  //  可以通过Ctrl+Z热键触发这段代码
         System.out.println("编辑器当前状态：" + editor);
 
         System.out.println("撤回上一个版本");
