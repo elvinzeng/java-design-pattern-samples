@@ -11,7 +11,7 @@ package com.gelvt.gofdp.memento{
         + toString() : String
     }
 
-    class History <<编辑器历史记录>> {
+    class VersionManager <<编辑器历史版本管理器>> {
         - versions : List<Version>
         + contains(o : Object) : boolean
         + iterator() : Iterator<Version>
@@ -38,7 +38,7 @@ package com.gelvt.gofdp.memento{
     }
 
     Editor ..> Version
-    Version <..o History
+    Version <..o VersionManager
 
 }
 

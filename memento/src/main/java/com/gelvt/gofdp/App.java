@@ -1,7 +1,7 @@
 package com.gelvt.gofdp;
 
 import com.gelvt.gofdp.memento.Editor;
-import com.gelvt.gofdp.memento.History;
+import com.gelvt.gofdp.memento.VersionManager;
 
 /**
  * Client
@@ -11,7 +11,7 @@ import com.gelvt.gofdp.memento.History;
 public class App {
     public static void main(String[] args) {
         Editor editor = new Editor();
-        History history = new History();
+        VersionManager history = new VersionManager();
 
         editor.setAuthor("Elvin Zeng");
         editor.setContent("第一个版本");

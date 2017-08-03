@@ -5,11 +5,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 编辑器历史记录
+ * 编辑器历史版本管理器
  * @author: Elvin Zeng
  * @date: 17-7-31.
  */
-public class History {
+public class VersionManager {
     private List<Version> versions = new LinkedList<>();
 
     public boolean contains(Object o) {
