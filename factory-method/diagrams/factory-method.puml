@@ -47,7 +47,7 @@ App ..> CarrierFactory : 调用
 App ..> Carrier : 调用
 
 footer
-<font size="20" color="red">http://blog.zenghui.name</font>
+<font size="20" color="red">http://www.bughui.com</font>
 endfooter
 
 @enduml

@@ -62,7 +62,7 @@ class Client{
 Client ..> ProductFactory
 
 footer
-<font size="20" color="red">http://blog.zenghui.name</font>
+<font size="20" color="red">http://www.bughui.com</font>
 endfooter
 
 

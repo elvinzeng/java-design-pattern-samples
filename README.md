@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/elvinzeng/java-design-pattern-samples.svg?branch=master)](https://travis-ci.org/elvinzeng/java-design-pattern-samples)
 
 # Java-design-pattern-samples
-这个项目是我的博客中[《GoF设计模式》系列文章](http://blog.zenghui.name/2017/06/10/gof-design-pattern-overview/)中要到的例子的源码，项目中所有的例子均采用Java语言实现。
+这个项目是我的博客中[《GoF设计模式》系列文章](http://www.bughui.com/2017/06/10/gof-design-pattern-overview/)中要到的例子的源码，项目中所有的例子均采用Java语言实现。
 
 # 设计模式列表
 到今天为止实现了以下模式，以后有空余时间的话将继续更新。
@@ -28,5 +28,5 @@
 
 
 # 打个广告  
-如果你觉得我的[《GoF设计模式》系列文章](http://blog.zenghui.name/2017/06/10/gof-design-pattern-overview/)或者本项目的示例代码写得好，
-可以帮我在戳Github上的Star给我加星点赞，或者去[这里](http://blog.zenghui.name/2017/06/10/gof-design-pattern-overview/)翻到页面最下面戳打赏。  
+如果你觉得我的[《GoF设计模式》系列文章](http://www.bughui.com/2017/06/10/gof-design-pattern-overview/)或者本项目的示例代码写得好，
+可以帮我在戳Github上的Star给我加星点赞，或者去[这里](http://www.bughui.com/2017/06/10/gof-design-pattern-overview/)翻到页面最下面戳打赏。  
