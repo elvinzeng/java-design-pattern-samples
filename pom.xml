@@ -47,6 +47,7 @@
         <module>template</module>
         <module>command</module>
         <module>memento</module>
+        <module>iterator</module>
     </modules>
 
 
