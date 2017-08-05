@@ -16,7 +16,7 @@ package com.gelvt.gofdp.iterator{
         + {abstract} add(E e) : void
     }
 
-    class Node<E> <<链表节点>>{
+    class Node<E> <<链表节点，本例中实现为嵌套类>>{
         - next : Node<E>
         - item : E
         + Node(next : Node<E>, item : E)
@@ -24,6 +24,12 @@ package com.gelvt.gofdp.iterator{
         + setNext(next : Node<E>) : void
         + getItem() : E
         + setItem(item : E) : void
+    }
+
+    class LinkedListIterator<E> <<链表的迭代器，在本例中实现为匿名内嵌类>>{
+        - next : Node<E>
+        + hasNext() : boolean
+        + next() : E
     }
 
     class LinkedList<E> <<单链表（非线程安全）>> {
@@ -40,7 +46,9 @@ package com.gelvt.gofdp.iterator{
     Iterable <|-- List
     List <|-- LinkedList
     Node <.. LinkedList
-
+    Iterator <|-- LinkedListIterator
+    LinkedListIterator <.. LinkedList
+    Node <.. LinkedListIterator
 }
 
 package com.gelvt.gofdp{

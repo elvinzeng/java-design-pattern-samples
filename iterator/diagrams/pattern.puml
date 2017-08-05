@@ -1,0 +1,32 @@
+@startuml
+
+note "迭代器模式" as name
+
+interface Iterator<E>{
+    + {abstract} hasNext() : boolean
+    + {abstract} next() : E
+    + {abstract} remove() : void
+}
+
+class ConcreteIterator{
+
+}
+
+interface Aggregate<E>{
+    + {abstract} iterator() : Iterator<E>
+}
+
+class ConcreteAggregate<E>{
+    + iterator() : Iterator<E>
+}
+
+Aggregate o--> Iterator
+Aggregate <|-- ConcreteAggregate
+Iterator <|-- ConcreteIterator
+ConcreteAggregate ..> ConcreteIterator
+
+footer
+<font size="20" color="red">http://www.bughui.com</font>
+endfooter
+
+@enduml
