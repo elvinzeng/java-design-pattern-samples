@@ -26,6 +26,7 @@
 * [模板方法模式](/template)
 * [命令模式](/command)
 * [备忘录模式](/memento)
+* [迭代器模式](/iterator)
 
 
 # 打个广告  
