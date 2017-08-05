@@ -21,7 +21,6 @@ public interface List<E> extends Iterable<E> {
      * 根据需要还可以重载插入指定位置的版本。
      * 这里为了简化代码就不再演示。
      * @param e 待添加元素
-     * @return
      */
     void add(E e);
 }
