@@ -5,10 +5,20 @@ package com.gelvt.gofdp.mediator;
  * @author: Elvin Zeng
  * @date: 17-8-8
  */
-public interface EventHandler {
+public abstract class EventHandler {
+    private EventBus eventBus;
+
+    public EventHandler(EventBus eventBus) {
+        this.eventBus = eventBus;
+    }
+
+    public EventBus getEventBus() {
+        return eventBus;
+    }
+
     /**
      * 处理事件
      * @param message 消息对象
      */
-    void handle(Object message);
+    public abstract void handle(Object message);
 }

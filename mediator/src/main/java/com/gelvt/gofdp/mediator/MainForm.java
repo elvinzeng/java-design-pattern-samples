@@ -5,11 +5,10 @@ package com.gelvt.gofdp.mediator;
  * @author: Elvin Zeng
  * @date: 17-8-8
  */
-public class MainForm implements EventHandler{
-    private EventBus eventBus;
+public class MainForm extends EventHandler{
 
     public MainForm(EventBus eventBus) {
-        this.eventBus = eventBus;
+        super(eventBus);
     }
 
     @Override
@@ -17,10 +16,10 @@ public class MainForm implements EventHandler{
         String command = message.toString();
         if ("showWindow".equals(command)){
             show();
-            eventBus.post("audio_event", "show-window.mp3");
+            getEventBus().post("audio_event", "show-window.mp3");
         }else if ("hideWindow".equals(command)){
             hide();
-            eventBus.post("audio_event", "hide-window.mp3");
+            getEventBus().post("audio_event", "hide-window.mp3");
         }else{
             System.out.println("未知事件");
         }

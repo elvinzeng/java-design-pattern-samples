@@ -5,11 +5,10 @@ package com.gelvt.gofdp.mediator;
  * @author: Elvin Zeng
  * @date: 17-8-8
  */
-public class KeyMapManager implements EventHandler {
-    private EventBus eventBus;
+public class KeyMapManager extends EventHandler {
 
     public KeyMapManager(EventBus eventBus) {
-        this.eventBus = eventBus;
+        super(eventBus);
     }
 
     @Override
@@ -17,9 +16,9 @@ public class KeyMapManager implements EventHandler {
         String key = message.toString();
         System.out.println("你按下了：" + key);
         if ("alt+d".equals(key)){
-            eventBus.post("main_form_event", "hideWindow");
+            getEventBus().post("main_form_event", "hideWindow");
         }else if ("alt+s".equals(key)){
-            eventBus.post("main_form_event", "showWindow");
+            getEventBus().post("main_form_event", "showWindow");
         }
     }
 }

@@ -5,11 +5,10 @@ package com.gelvt.gofdp.mediator;
  * @author: Elvin Zeng
  * @date: 17-8-8
  */
-public class AudioPlayer implements EventHandler{
-    private EventBus eventBus;
+public class AudioPlayer extends EventHandler{
 
     public AudioPlayer(EventBus eventBus) {
-        this.eventBus = eventBus;
+        super(eventBus);
     }
 
     @Override
