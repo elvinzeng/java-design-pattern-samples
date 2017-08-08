@@ -1,0 +1,42 @@
+@startuml
+
+note "调停者模式" as name
+
+interface Mediator{
+    + {abstract} changed() : void
+}
+
+class ConcreteMediator{
+    - colleagueA : ConcreteColleagueA
+    - colleagueB : ConcreteColleagueB
+    + changed() : void
+}
+
+abstract class Colleague{
+    - mediator : Mediator
+    + Colleague()
+    + getMediator() : Mediator
+}
+
+class ConcreteColleagueA{
+    + ConcreteColleagueA()
+    + operation() : void
+}
+
+class ConcreteColleagueB{
+    + ConcreteColleagueB()
+    + operation() : void
+}
+
+Mediator <|.. ConcreteMediator
+Mediator <-- Colleague
+Colleague <|-- ConcreteColleagueA
+Colleague <|-- ConcreteColleagueB
+ConcreteMediator ..> ConcreteColleagueA
+ConcreteMediator ..> ConcreteColleagueB
+
+footer
+<font size="20" color="red">http://www.bughui.com</font>
+endfooter
+
+@enduml
