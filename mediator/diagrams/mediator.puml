@@ -1,0 +1,64 @@
+@startuml
+
+package com.gelvt.gofdp.mediator{
+    interface EventBus<<事件总线>>{
+        + {abstract} post(type : String, message : Object) : void
+    }
+
+    class DefaultEventBus <<事件总线的默认实现>>{
+        - {static} instance : DefaultEventBus
+        - {static} lockObj : Object
+        - eventHandlerMap : Map<String, List<EventHandler>>
+        - DefaultEventBus()
+        + {static} getInstance() : DefaultEventBus
+        + post(type : String, message : Object) : void
+        + registerHandler(type : String, eventHandler : EventHandler) : void
+    }
+
+    interface EventHandler<<事件处理器>> {
+        + {abstract} handle(message : Object) : void
+    }
+
+    class AudioPlayer<<音效播放器>>{
+        - eventBus : EventBus
+        + AudioPlayer(eventBus : EventBus)
+        + handle(Object message) : void
+    }
+
+    class MainForm<<程序主窗口>>{
+        - eventBus : EventBus
+        + MainForm(eventBus : EventBus)
+        + handle(Object message) : void
+        + show() : void
+        + hide() : void
+    }
+
+    class KeyMapManager<<键盘映射管理器>>{
+        - eventBus : EventBus
+        + KeyMapManager(eventBus : EventBus)
+        + handle(Object message) : void
+    }
+
+    EventBus <-- EventHandler
+    EventBus <|.. DefaultEventBus
+    DefaultEventBus ..> DefaultEventBus : "创建"
+    DefaultEventBus o--> EventHandler
+
+    EventHandler <|.. AudioPlayer
+    EventHandler <|.. MainForm
+    EventHandler <|.. KeyMapManager
+}
+
+package com.gelvt.gofdp{
+    class App <<Client>>{
+        + void main(String[] args)
+    }
+}
+
+App ..> EventBus
+
+footer
+<font size="20" color="red">http://www.bughui.com</font>
+endfooter
+
+@enduml
