@@ -41,7 +41,12 @@ public class DefaultEventBus implements EventBus {
         }
     }
 
-    @Override
+
+    /**
+     * 注册事件处理器
+     * @param type 感兴趣的事件类型
+     * @param eventHandler 事件处理器
+     */
     public synchronized void registerHandler(String type, EventHandler eventHandler) {
         if (eventHandlerMap.containsKey(type)){
             List<EventHandler> handlers = eventHandlerMap.get(type);

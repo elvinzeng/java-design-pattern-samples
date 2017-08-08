@@ -9,7 +9,7 @@ import com.gelvt.gofdp.mediator.*;
  */
 public class App {
     public static void main(String[] args) {
-        EventBus eventBus = DefaultEventBus.getInstance();
+        DefaultEventBus eventBus = DefaultEventBus.getInstance();
 
         //  tips: type常量在程序中可以抽取到常量类中
         eventBus.registerHandler("keyboard_event", new KeyMapManager(eventBus));

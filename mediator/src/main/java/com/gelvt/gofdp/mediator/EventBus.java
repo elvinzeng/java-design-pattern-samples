@@ -12,11 +12,4 @@ public interface EventBus {
      * @param message 消息对象
      */
     void post(String type, Object message);
-
-    /**
-     * 注册事件处理器
-     * @param type 感兴趣的事件类型
-     * @param eventHandler 事件处理器
-     */
-    void registerHandler(String type, EventHandler eventHandler);
 }
