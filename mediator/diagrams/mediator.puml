@@ -15,18 +15,19 @@ package com.gelvt.gofdp.mediator{
         + registerHandler(type : String, eventHandler : EventHandler) : void
     }
 
-    interface EventHandler<<事件处理器>> {
+    abstract class EventHandler<<事件处理器>> {
+        - eventBus : EventBus
+        + EventHandler(eventBus : EventBus)
+        + getEventBus() : EventBus
         + {abstract} handle(message : Object) : void
     }
 
     class AudioPlayer<<音效播放器>>{
-        - eventBus : EventBus
         + AudioPlayer(eventBus : EventBus)
         + handle(Object message) : void
     }
 
     class MainForm<<程序主窗口>>{
-        - eventBus : EventBus
         + MainForm(eventBus : EventBus)
         + handle(Object message) : void
         + show() : void
@@ -34,7 +35,6 @@ package com.gelvt.gofdp.mediator{
     }
 
     class KeyMapManager<<键盘映射管理器>>{
-        - eventBus : EventBus
         + KeyMapManager(eventBus : EventBus)
         + handle(Object message) : void
     }
@@ -44,9 +44,9 @@ package com.gelvt.gofdp.mediator{
     DefaultEventBus ..> DefaultEventBus : "创建"
     DefaultEventBus o--> EventHandler
 
-    EventHandler <|.. AudioPlayer
-    EventHandler <|.. MainForm
-    EventHandler <|.. KeyMapManager
+    EventHandler <|-- AudioPlayer
+    EventHandler <|-- MainForm
+    EventHandler <|-- KeyMapManager
 }
 
 package com.gelvt.gofdp{
