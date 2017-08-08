@@ -27,6 +27,7 @@
 * [命令模式](/command)
 * [备忘录模式](/memento)
 * [迭代器模式](/iterator)
+* [调停者模式](/mediator)
 
 
 # 打个广告  
