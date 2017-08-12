@@ -1,54 +1,7 @@
 @startuml
 
-package com.gelvt.gofdp.iterator{
-    interface Iterator<E> <<迭代器>>{
-        + {abstract} hasNext() : boolean
-        + {abstract} next() : E
-    }
+package com.gelvt.gofdp.interpreter{
 
-    interface Iterable<T> <<可迭代的对象>>{
-        + {abstract} iterator() : Iterator<T>
-    }
-
-    interface List<E> <<列表>>{
-        + {abstract} size() : int
-        + {abstract} isEmpty() : boolean
-        + {abstract} add(E e) : void
-    }
-
-    class Node<E> <<链表节点，本例中实现为嵌套类>>{
-        - next : Node<E>
-        - item : E
-        + Node(next : Node<E>, item : E)
-        + getNext() : Node<E>
-        + setNext(next : Node<E>) : void
-        + getItem() : E
-        + setItem(item : E) : void
-    }
-
-    class LinkedListIterator<E> <<链表的迭代器，在本例中实现为匿名内嵌类>>{
-        - next : Node<E>
-        + hasNext() : boolean
-        + next() : E
-    }
-
-    class LinkedList<E> <<单链表（非线程安全）>> {
-        - size = 0 : int
-        - head : Node<E>
-        - last : Node<E>
-        + iterator() : Iterator<E>
-        + size() : int
-        + isEmpty() : boolean
-        + add(e : E) : void
-    }
-
-    Iterator <.. Iterable
-    Iterable <|-- List
-    List <|-- LinkedList
-    Node <.. LinkedList
-    Iterator <|-- LinkedListIterator
-    LinkedListIterator <.. LinkedList
-    Node <.. LinkedListIterator
 }
 
 package com.gelvt.gofdp{
@@ -57,7 +10,7 @@ package com.gelvt.gofdp{
     }
 }
 
-App ..> Iterator
+
 
 footer
 <font size="20" color="red">http://www.bughui.com</font>
