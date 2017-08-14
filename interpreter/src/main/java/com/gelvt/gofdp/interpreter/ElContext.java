@@ -8,14 +8,14 @@ import java.util.Map;
  * @author: Elvin Zeng
  * @date: 17-8-14.
  */
-public class ELContext {
+public class ElContext {
     private Map<String, Object> scope;
 
-    public ELContext() {
+    public ElContext() {
         this.scope = new HashMap<>();
     }
 
-    public ELContext(Map<String, Object> scope) {
+    public ElContext(Map<String, Object> scope) {
         this.scope = scope;
     }
 

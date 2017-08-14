@@ -12,7 +12,7 @@ public class DivExpression extends BinaryExpression{
     }
 
     @Override
-    public Object getValue(ELContext context) {
+    public Object getValue(ElContext context) {
         return (double)getLeftOperand().getValue(context)
                 / (double)getRightOperand().getValue(context);
     }

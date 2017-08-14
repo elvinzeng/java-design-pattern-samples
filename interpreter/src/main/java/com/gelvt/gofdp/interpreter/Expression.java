@@ -6,5 +6,5 @@ package com.gelvt.gofdp.interpreter;
  * @date: 17-8-14.
  */
 public interface Expression {
-    Object getValue(ELContext context);
+    Object getValue(ElContext context);
 }

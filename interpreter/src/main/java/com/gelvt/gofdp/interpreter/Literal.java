@@ -14,7 +14,7 @@ public class Literal implements Expression {
     }
 
     @Override
-    public Object getValue(ELContext context) {
+    public Object getValue(ElContext context) {
         return val;
     }
 

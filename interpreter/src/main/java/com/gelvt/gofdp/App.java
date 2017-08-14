@@ -1,6 +1,6 @@
 package com.gelvt.gofdp;
 
-import com.gelvt.gofdp.interpreter.ELContext;
+import com.gelvt.gofdp.interpreter.ElContext;
 import com.gelvt.gofdp.interpreter.ElParser;
 import com.gelvt.gofdp.interpreter.Expression;
 
@@ -12,7 +12,7 @@ import com.gelvt.gofdp.interpreter.Expression;
 public class App {
     public static void main(String[] args) {
         ElParser parser = new ElParser();
-        ELContext elContext = new ELContext();
+        ElContext elContext = new ElContext();
         elContext.put("a", 12d);
         elContext.put("b", 3d);
         elContext.put("c", 3d);
