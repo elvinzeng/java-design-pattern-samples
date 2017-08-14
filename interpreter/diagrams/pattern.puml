@@ -1,0 +1,32 @@
+@startuml
+
+note "解释器模式" as name
+
+class Context{
+
+}
+
+abstract class AbstractExpression{
+    + {abstract} interpret(context : Context) : void
+}
+
+class TerminalExpression{
+    + interpret(context : Context) : void
+}
+
+class NonterminalExpression{
+    + interpret(context : Context) : void
+}
+
+Client ..> Context
+Client ..> AbstractExpression
+AbstractExpression ..> Context
+AbstractExpression <|-- TerminalExpression
+AbstractExpression <|-- NonterminalExpression
+AbstractExpression <-o NonterminalExpression
+
+footer
+<font size="20" color="red">http://www.bughui.com</font>
+endfooter
+
+@enduml
