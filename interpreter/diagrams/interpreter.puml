@@ -1,6 +1,94 @@
 @startuml
 
 package com.gelvt.gofdp.interpreter{
+    class ElContext<<表达式上下文>> {
+        - scope : Map<String, Object>
+        + ElContext()
+        + ElContext(scope : Map<String, Object>)
+        + containsKey(key : Object) : boolean
+        + get(Object key) : Object
+        + put(key : String, value : Object) : Object
+        + remove(key : Object) : Object
+        + clear() : void
+    }
+
+    interface Expression<<表达式>> {
+        + {abstract} getValue(context : ElContext) : Object
+    }
+
+    class Literal<<字面常量>>{
+        - val : Object
+        + Literal(val : Object)
+        + getValue(context : ElContext) : Object
+    }
+
+    class Variable<<变量>>{
+        - variableName : String
+        + Variable(variableName : String)
+        + getValue(context : ElContext) : Object
+    }
+
+    abstract class BinaryExpression<<二元表达式>>{
+        - leftOperand : Expression
+        - rightOperand : Expression
+        + BinaryExpression(leftOperand : Expression, rightOperand : Expression)
+        + getLeftOperand() : Expression
+        + getRightOperand() : Expression
+    }
+
+    class AddExpression <<加法表达式>>{
+        + AddExpression(leftOperand : Expression, rightOperand : Expression)
+        + getValue(context : ElContext) : Object
+    }
+
+    class SubExpression <<减法表达式>>{
+        + SubExpression(leftOperand : Expression, rightOperand : Expression)
+        + getValue(context : ElContext) : Object
+    }
+
+    class MulExpression <<乘法表达式>>{
+        + MulExpression(leftOperand : Expression, rightOperand : Expression)
+        + getValue(context : ElContext) : Object
+    }
+
+    class DivExpression <<除法表达式>>{
+        + DivExpression(leftOperand : Expression, rightOperand : Expression)
+        + getValue(context : ElContext) : Object
+    }
+
+    class Tokenizer <<表达式分解工具>> {
+        - str : String
+        - tokens : List<String>
+        - currentIndex : int
+        + Tokenizer(str : String)
+        + hasMoreTokens() : boolean
+        + nextToken() : String
+    }
+
+    class ElParser<<表达式解析器>> {
+        - operandStack : Stack<Expression>
+        - operatorStack : Stack<String>
+        - isOperator(str : String) : boolean
+        - isPrecedeThanTopOfStack(operator : String) : boolean
+        + parse(expressionStr : String) : Expression
+        - parseTerminal(str : String) : Expression
+        - parseBinaryExpression(operatorStr : String, leftOperand : Expression, rightOperand : Expression) : Expression
+    }
+
+    ElContext <.. Expression
+    Expression <|.. Literal
+    Expression <|.. Variable
+    Expression <|.. BinaryExpression
+    BinaryExpression <|-- AddExpression
+    BinaryExpression <|-- SubExpression
+    BinaryExpression <|-- MulExpression
+    BinaryExpression <|-- DivExpression
+    ElParser ..> Tokenizer
+    AddExpression <.. ElParser
+    SubExpression <.. ElParser
+    MulExpression <.. ElParser
+    DivExpression <.. ElParser
+
 
 }
 
@@ -10,6 +98,9 @@ package com.gelvt.gofdp{
     }
 }
 
+App ..> ElContext
+App ..> Expression
+App ..> ElParser
 
 
 footer
