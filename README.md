@@ -4,7 +4,6 @@
 这个项目是我的博客中[《GoF设计模式》系列文章](https://www.bughui.com/2017/06/10/gof-design-pattern-overview/)中要到的例子的源码，项目中所有的例子均采用Java语言实现。
 
 # 设计模式列表
-到今天为止实现了以下模式，以后有空余时间的话将继续更新。
 
 * [简单工厂模式](/simple-factory)
 * [工厂方法模式](/factory-method)
@@ -29,6 +28,7 @@
 * [迭代器模式](/iterator)
 * [调停者模式](/mediator)
 * [解释器模式](/interpreter)
+* [访问者模式](/visitor)
 
 
 # 打个广告  
