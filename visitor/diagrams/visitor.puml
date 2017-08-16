@@ -1,0 +1,84 @@
+@startuml
+
+package com.gelvt.gofdp.visitor{
+
+    abstract class FileInfo<<文件描述信息>> {
+        - name : String
+        - path : String
+        + FileInfo()
+        + FileInfo(name : String)
+        + getName() : String
+        + setName(name : String) : void
+        + getPath() : String
+        + setPath(path : String) : void
+        + {abstract} traverseFileTree(FileInfoVisitor visitor) : void
+    }
+
+    class RegularFileInfo<<普通文件的描述信息>> {
+        - data : byte[]
+        + RegularFileInfo(name : String)
+        + traverseFileTree(visitor : FileInfoVisitor) : void
+        + getData() : byte[]
+        + setData(byte[] data) : void
+    }
+
+    class DirectoryInfo<<目录描述信息>> {
+        - children : List<FileInfo>
+        + DirectoryInfo(path : String)
+        + traverseFileTree(visitor : FileInfoVisitor) : void
+        + countChildren() : int
+        + add(fileInfo : FileInfo) : void
+        + remove(fileInfo : FileInfo) : void
+        + clear() : void
+    }
+
+    interface FileInfoVisitor<<文件访问者>> {
+        + {abstract} visitFile(file : RegularFileInfo) : void
+        + {abstract} visitFile(directory : DirectoryInfo) : void
+    }
+
+    class DirectoryStructureDisplayer<<目录结构显示Visitor>> {
+        - basePathDepth : int
+        + DirectoryStructureDisplayer(basePathDepth : int)
+        + visitFile(file : RegularFileInfo) : void
+        + visitFile(directory : DirectoryInfo) : void
+    }
+
+    class FileSearcher<<文件搜索Visitor>> {
+        - fileNamePattern : Pattern
+        + FileSearcher(fileNamePattern : String)
+        + visitFile(file : RegularFileInfo) : void
+        + visitFile(directory : DirectoryInfo) : void
+    }
+
+    class FileExplorer<<文件管理器>> {
+        - currentDirectory : DirectoryInfo
+        + getCurrentDirectory() : DirectoryInfo
+        + setCurrentDirectory(currentDirectory : DirectoryInfo) : void
+        + traverseFileTree(visitor : FileInfoVisitor) : void
+    }
+
+    FileInfo <|-- RegularFileInfo
+    FileInfo <|-- DirectoryInfo
+    FileInfoVisitor <|.. DirectoryStructureDisplayer
+    FileInfoVisitor <|.. FileSearcher
+    FileExplorer --> FileInfo
+    RegularFileInfo <.. FileInfoVisitor
+    DirectoryInfo <.. FileInfoVisitor
+    FileInfo ..> FileInfoVisitor
+}
+
+package com.gelvt.gofdp{
+    class App <<Client>>{
+        + void main(String[] args)
+    }
+}
+
+App ..> FileExplorer
+
+
+footer
+<font size="20" color="red">http://www.bughui.com</font>
+endfooter
+
+@enduml
