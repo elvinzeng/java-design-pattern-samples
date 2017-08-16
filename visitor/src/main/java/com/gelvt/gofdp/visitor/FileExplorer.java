@@ -17,20 +17,10 @@ public class FileExplorer {
     }
 
     /**
-     * 从指定的目录开始用访问者遍历文件树
-     * @param visitor 访问者
-     * @param directoryInfo 要遍历的目录
-     */
-    private void traverseFileTree(FileTreeVisitor visitor, DirectoryInfo directoryInfo){
-        System.out.println("path: " + directoryInfo.getPath());
-        directoryInfo.traverseFileTree(visitor);
-    }
-
-    /**
      * 从当前所在目录开始用访问者遍历文件树
      * @param visitor 访问者
      */
-    public void traverseFileTree(FileTreeVisitor visitor){
-        traverseFileTree(visitor, currentDirectory);
+    public void traverseFileTree(FileInfoVisitor visitor){
+        currentDirectory.traverseFileTree(visitor);
     }
 }

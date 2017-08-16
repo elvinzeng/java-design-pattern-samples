@@ -15,7 +15,7 @@ public class RegularFileInfo extends FileInfo {
     }
 
     @Override
-    public void traverseFileTree(FileTreeVisitor visitor) {
+    public void traverseFileTree(FileInfoVisitor visitor) {
         visitor.visitFile(this);
     }
 

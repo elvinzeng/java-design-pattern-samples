@@ -12,7 +12,7 @@ public class App {
         FileExplorer fileExplorer = new FileExplorer();
         fileExplorer.setCurrentDirectory(generateTestDir());
 
-        System.out.printf("显示目录结构 ");
+        System.out.println("显示目录结构 ");
         fileExplorer.traverseFileTree(new DirectoryStructureDisplayer(2));
 
         System.out.println("\n");

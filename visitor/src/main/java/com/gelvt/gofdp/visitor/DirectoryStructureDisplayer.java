@@ -5,7 +5,7 @@ package com.gelvt.gofdp.visitor;
  * @author: Elvin Zeng
  * @date: 17-8-16.
  */
-public class DirectoryStructureDisplayer implements FileTreeVisitor {
+public class DirectoryStructureDisplayer implements FileInfoVisitor {
     private int basePathDepth;
 
     public DirectoryStructureDisplayer(int basePathDepth) {

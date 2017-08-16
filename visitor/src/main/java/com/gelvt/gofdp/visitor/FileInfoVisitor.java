@@ -1,11 +1,11 @@
 package com.gelvt.gofdp.visitor;
 
 /**
- * 文件树访问者
+ * 文件访问者
  * @author: Elvin Zeng
  * @date: 17-8-16.
  */
-public interface FileTreeVisitor {
+public interface FileInfoVisitor {
     /**
      * 访问普通文件
      * @param file 当前文件

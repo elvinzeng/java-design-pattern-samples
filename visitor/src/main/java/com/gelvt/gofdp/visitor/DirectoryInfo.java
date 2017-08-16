@@ -19,7 +19,7 @@ public class DirectoryInfo extends FileInfo {
     }
 
     @Override
-    public void traverseFileTree(FileTreeVisitor visitor) {
+    public void traverseFileTree(FileInfoVisitor visitor) {
         visitor.visitFile(this);
         for(FileInfo file : children){
             file.traverseFileTree(visitor);

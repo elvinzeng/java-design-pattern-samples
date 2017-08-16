@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  * @author: Elvin Zeng
  * @date: 17-8-16.
  */
-public class FileSearcher implements FileTreeVisitor {
+public class FileSearcher implements FileInfoVisitor {
     private Pattern fileNamePattern;
 
     public FileSearcher(String fileNamePattern) {

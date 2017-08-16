@@ -44,5 +44,5 @@ public abstract class FileInfo {
      * 用访问者遍历文件树
      * @param visitor 访问者
      */
-    public abstract void traverseFileTree(FileTreeVisitor visitor);
+    public abstract void traverseFileTree(FileInfoVisitor visitor);
 }
