@@ -1,7 +1,7 @@
 package com.gelvt.gofdp.visitor;
 
 /**
- * 目录结构现实Visitor
+ * 目录结构显示Visitor
  * @author: Elvin Zeng
  * @date: 17-8-16.
  */
