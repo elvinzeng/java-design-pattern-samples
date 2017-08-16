@@ -1,0 +1,57 @@
+@startuml
+
+note "访问者模式" as name
+
+abstract class Element{
+    + {abstract} accept(Visitor visitor)
+}
+
+note right of Element : 被访问者
+
+class ConcreteElementA{
+    + accept(Visitor visitor)
+}
+
+class ConcreteElementB{
+    + accept(Visitor visitor)
+}
+
+interface Visitor{
+    + {abstract} visit(element : ConcreteElementA)
+    + {abstract} visit(element : ConcreteElementB)
+}
+
+note right of Visitor : 访问者
+
+class ConcreteVisitorA{
+    + visit(element : ConcreteElementA)
+    + visit(element : ConcreteElementB)
+}
+
+class ConcreteVisitorB{
+    + visit(element : ConcreteElementA)
+    + visit(element : ConcreteElementB)
+}
+
+class ObjectStructure{
+
+}
+
+Element <|-- ConcreteElementA
+Element <|-- ConcreteElementB
+Visitor <|.. ConcreteVisitorA
+Visitor <|.. ConcreteVisitorB
+ObjectStructure --> Element
+Element ..> Visitor
+ConcreteElementA <.. Visitor
+ConcreteElementB <.. Visitor
+
+
+Client ..> ObjectStructure
+Client ..> Visitor
+
+footer
+<font size="20" color="red">http://www.bughui.com</font>
+endfooter
+
+@enduml
